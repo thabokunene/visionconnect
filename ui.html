@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Components | VisionConnect</title>
+  <meta name="description" content="Living style guide for the VisionConnect UI component library — production-ready Web Components with accessibility, loading, empty, and edge-case states.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    /* Style-guide-only chrome (sg-*). Not part of the product component library. */
+    .sg-section { padding: 64px 0; border-bottom: 1px solid var(--light-grey); }
+    .sg-section:last-of-type { border-bottom: none; }
+    .sg-h2 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+    .sg-h2--spaced { margin-top: 32px; }
+    .sg-h3 {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 0 0 12px;
+    }
+    .sg-grid { display: grid; gap: 24px; }
+    .sg-grid--2 { grid-template-columns: repeat(2, 1fr); }
+    .sg-grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .sg-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    .sg-stack { display: flex; flex-direction: column; gap: 12px; max-width: 420px; }
+    .sg-mt { margin-top: 32px; }
+    .sg-mt-sm { margin-top: 16px; }
+    .sg-mt-xs { margin-top: 8px; }
+    .sg-spacer { height: 16px; }
+    .sg-spacer-sm { height: 8px; }
+    .sg-narrow { max-width: 720px; }
+    .sg-demo {
+      background: var(--bone);
+      border: 1px solid var(--light-grey);
+      padding: 28px;
+    }
+    .sg-demo--dark { background: var(--ink); border-color: var(--dark-border); }
+    .sg-demo--white { background: var(--white); }
+    .sg-note {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--mid-grey);
+      line-height: 1.6;
+      margin: 12px 0 0;
+    }
+    .sg-note code,
+    .sg-pre code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      background: var(--bone);
+      border: 1px solid var(--light-grey);
+      padding: 1px 5px;
+    }
+    .sg-demo--dark .sg-note { color: var(--light-grey); }
+    .sg-demo--dark .sg-note code { background: var(--dark-surface); border-color: var(--dark-border); color: var(--white); }
+    .sg-pre {
+      margin-top: 16px;
+      overflow-x: auto;
+    }
+    .sg-pre code { display: block; line-height: 1.6; padding: 10px; background: var(--white); }
+    .sg-api { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 16px; }
+    .sg-api th, .sg-api td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--light-grey);
+      vertical-align: top;
+    }
+    .sg-api th {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid-grey);
+    }
+    .sg-api code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      background: var(--bone);
+      padding: 1px 5px;
+      border: 1px solid var(--light-grey);
+    }
+    .sg-kbd {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 11px;
+      border: 1px solid var(--light-grey);
+      border-bottom-width: 2px;
+      border-radius: 3px;
+      padding: 1px 6px;
+      background: var(--white);
+    }
+    .sg-stat { text-align: center; }
+    .sg-stat .vc-counter { font-size: 32px; font-weight: 900; }
+    .sg-composed { display: flex; gap: 16px; align-items: flex-start; }
+    .sg-composed-body { flex: 1; }
+    .sg-avatar-row { display: flex; gap: 16px; align-items: center; }
+    .sg-metric-dark .vc-counter { color: var(--white); font-size: 32px; font-weight: 900; }
+    @media (max-width: 768px) {
+      .sg-grid--2, .sg-grid--3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pre-header">
+    <div class="container">
+      <div class="pre-header-left">
+        <div class="pre-header-item">
+          <span class="material-symbols-outlined">call</span>
+          <span>24hr Control: +27 78 118 8828</span>
+        </div>
+        <div class="pre-header-divider"></div>
+        <div class="pre-header-item">
+          <span class="material-symbols-outlined">schedule</span>
+          <span>After-hours dispatch active</span>
+        </div>
+      </div>
+      <div class="pre-header-right">
+        <div class="lang-toggle">
+          <a href="#" class="active">EN</a>
+          <span>/</span>
+          <a href="#">AF</a>
+        </div>
+        <div class="pre-header-divider"></div>
+        <a href="contact.html" class="pre-header-link">
+          Request a Quote
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="wordmark">
+        <span class="vision">Vision</span><span class="connect">Connect</span><span class="dot">.</span>
+      </a>
+      <div class="nav-links">
+        <a href="capabilities.html">Capabilities</a>
+        <a href="corridors.html">Corridors</a>
+        <a href="fleet.html">Fleet</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="ui.html" class="active">UI Kit</a>
+      </div>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <div class="container">
+      <div class="micro-label">Design System</div>
+      <h1>UI Kit<span class="red-dot">.</span></h1>
+      <p class="page-intro">
+        Production Web Components used across VisionConnect. Every control is keyboard-accessible,
+        screen-reader wired, and ships with loading, empty, and error states. This page is the
+        living style guide — what you see is the same markup you ship.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= BUTTONS ======================= -->
+  <section class="sg-section" id="buttons">
+    <div class="container">
+      <div class="micro-label">01 / Button</div>
+      <div class="sg-grid sg-grid--2">
+        <div>
+          <h2 class="sg-h2">Variants</h2>
+          <div class="sg-demo sg-row">
+            <vc-button variant="primary">Request a Quote</vc-button>
+            <vc-button variant="secondary">Download Specs</vc-button>
+            <vc-button variant="light">Light CTA</vc-button>
+            <vc-button variant="primary" size="sm">Small</vc-button>
+          </div>
+          <p class="sg-note">
+            <code>variant</code> primary | secondary | light · <code>size</code> md | sm ·
+            <code>block</code> for full width. Native <code>&lt;button&gt;</code> underneath —
+            Enter/Space work for free.
+          </p>
+
+          <h2 class="sg-h2 sg-h2--spaced">States</h2>
+          <div class="sg-demo sg-row">
+            <vc-button variant="primary" loading>Loading Fleet</vc-button>
+            <vc-button variant="primary" disabled>Disabled</vc-button>
+            <vc-button variant="primary" href="contact.html" icon="arrow_forward">As a Link</vc-button>
+            <vc-button variant="primary" icon-start="download" icon="arrow_forward">With Icons</vc-button>
+          </div>
+          <p class="sg-note">
+            <code>loading</code> sets <code>aria-busy</code>, blocks activation, shows spinner.
+            <code>href</code> upgrades the control to a real anchor (crawlable, middle-clickable).
+          </p>
+
+          <h2 class="sg-h2 sg-h2--spaced">Async demo</h2>
+          <div class="sg-demo sg-row">
+            <vc-button variant="primary" id="demo-submit">Submit Request</vc-button>
+          </div>
+          <p class="sg-note">Click to see loading → toast success → idle. Guards against double-submit.</p>
+        </div>
+        <div>
+          <table class="sg-api">
+            <thead>
+              <tr><th>Prop / Attr</th><th>Type</th><th>Default</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>variant</code></td><td>string</td><td><code>primary</code></td><td>primary | secondary | light</td></tr>
+              <tr><td><code>size</code></td><td>string</td><td><code>md</code></td><td>md | sm</td></tr>
+              <tr><td><code>loading</code></td><td>boolean</td><td>false</td><td>Property + attribute; disables click</td></tr>
+              <tr><td><code>disabled</code></td><td>boolean</td><td>false</td><td>Property + attribute</td></tr>
+              <tr><td><code>href</code></td><td>string</td><td>—</td><td>Renders <code>&lt;a&gt;</code> instead of <code>&lt;button&gt;</code></td></tr>
+              <tr><td><code>type</code></td><td>string</td><td><code>button</code></td><td>button | submit | reset (button only)</td></tr>
+              <tr><td><code>icon</code></td><td>string</td><td>—</td><td>Material Symbols name, trailing</td></tr>
+              <tr><td><code>icon-start</code></td><td>string</td><td>—</td><td>Material Symbols name, leading</td></tr>
+              <tr><td><code>block</code></td><td>boolean</td><td>false</td><td>Full-width control</td></tr>
+            </tbody>
+          </table>
+          <pre class="sg-demo sg-pre"><code>&lt;vc-button variant="primary"
+           icon="arrow_forward"
+           href="contact.html"&gt;
+  Request a Quote
+&lt;/vc-button&gt;
+
+&lt;vc-button variant="primary" loading&gt;
+  Saving…
+&lt;/vc-button&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= COUNTERS ======================= -->
+  <section class="sg-section" id="counters">
+    <div class="container">
+      <div class="micro-label">02 / Counter</div>
+      <div class="sg-grid sg-grid--2">
+        <div>
+          <div class="sg-demo sg-grid sg-grid--3">
+            <div class="sg-stat">
+              <vc-counter value="14280" format="grouped" duration="900"
+                          aria-label="Cross-border loads delivered"></vc-counter>
+              <div class="about-number-label sg-mt-xs">Cross-border loads</div>
+            </div>
+            <div class="sg-stat">
+              <vc-counter value="98.7" format="percent" decimals="1" duration="700"
+                          aria-label="On-time delivery rate"></vc-counter>
+              <div class="about-number-label sg-mt-xs">On-time rate</div>
+            </div>
+            <div class="sg-stat">
+              <vc-counter value="18" duration="600"
+                          aria-label="Active corridors"></vc-counter>
+              <div class="about-number-label sg-mt-xs">Active corridors</div>
+            </div>
+          </div>
+          <p class="sg-note">
+            Animates once on viewport entry. <code>prefers-reduced-motion</code> jumps to the final
+            value. Screen readers get the <strong>final</strong> value via <code>aria-label</code>
+            (no rapid live-region spam). Fires <code>vc:done</code> when finished.
+          </p>
+        </div>
+        <div>
+          <table class="sg-api">
+            <thead>
+              <tr><th>Attr</th><th>Type</th><th>Default</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>value</code></td><td>number</td><td><code>0</code></td><td>Required target</td></tr>
+              <tr><td><code>duration</code></td><td>ms</td><td><code>600</code></td><td>Matches production ease-out</td></tr>
+              <tr><td><code>format</code></td><td>string</td><td>auto</td><td>plain | grouped | percent</td></tr>
+              <tr><td><code>decimals</code></td><td>int</td><td>auto</td><td>Fraction digits</td></tr>
+              <tr><td><code>prefix</code> / <code>suffix</code></td><td>string</td><td>—</td><td>Fixed affixes</td></tr>
+              <tr><td><code>start</code></td><td>boolean</td><td>false</td><td>Ignore viewport; animate now</td></tr>
+            </tbody>
+          </table>
+          <pre class="sg-demo sg-pre"><code>&lt;vc-counter value="14280"
+             format="grouped"
+             aria-label="Cross-border loads"&gt;&lt;/vc-counter&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= FIELDS ======================= -->
+  <section class="sg-section" id="fields">
+    <div class="container">
+      <div class="micro-label">03 / Field</div>
+      <div class="sg-grid sg-grid--2">
+        <div>
+          <div class="sg-demo">
+            <div class="sg-stack">
+              <vc-field label="Company" hint="Registered trading name." required>
+                <input class="form-input" type="text" name="company" placeholder="Vision Connect (Pty) Ltd">
+              </vc-field>
+
+              <vc-field label="Email" hint="We respond within 24 hours." required>
+                <input class="form-input" type="email" name="email2" placeholder="ops@co.za">
+              </vc-field>
+
+              <vc-field label="Ref number" error="Quote reference not found.">
+                <input class="form-input" type="text" name="ref" value="Q-9931">
+              </vc-field>
+
+              <vc-field label="Notes" label-hidden>
+                <textarea class="form-textarea" name="notes" placeholder="Special handling…"></textarea>
+              </vc-field>
+
+              <div class="sg-row">
+                <vc-button variant="primary" id="demo-validate">Validate fields</vc-button>
+              </div>
+            </div>
+          </div>
+          <p class="sg-note">
+            Label, hint and error are wired to the control (<code>for</code>,
+            <code>aria-describedby</code>, <code>aria-invalid</code>, <code>aria-required</code>).
+            Editing a field clears its error. <code>validate()</code> returns a boolean.
+          </p>
+        </div>
+        <div>
+          <table class="sg-api">
+            <thead>
+              <tr><th>API</th><th>Kind</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>label</code></td><td>attr</td><td>Visible label text</td></tr>
+              <tr><td><code>hint</code></td><td>attr</td><td>Help text, described-by control</td></tr>
+              <tr><td><code>error</code></td><td>attr / prop</td><td>Message; flips invalid styles + aria</td></tr>
+              <tr><td><code>required</code></td><td>attr</td><td>Marker + aria-required + validation</td></tr>
+              <tr><td><code>label-hidden</code></td><td>attr</td><td>SR-only label (placeholder patterns)</td></tr>
+              <tr><td><code>validate()</code></td><td>method</td><td>→ boolean; fires vc:valid / vc:invalid</td></tr>
+              <tr><td><code>value</code></td><td>prop</td><td>Proxies the first form control</td></tr>
+              <tr><td><code>focus()</code></td><td>method</td><td>Focuses the control</td></tr>
+            </tbody>
+          </table>
+          <pre class="sg-demo sg-pre"><code>const email = document.querySelector('vc-field');
+if (!email.validate()) {
+  email.focus();
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= TOASTS ======================= -->
+  <section class="sg-section" id="toasts">
+    <div class="container">
+      <div class="micro-label">04 / Toast</div>
+      <div class="sg-demo sg-row">
+        <vc-button variant="primary" data-toast="success">Success toast</vc-button>
+        <vc-button variant="primary" data-toast="error">Error toast</vc-button>
+        <vc-button variant="primary" data-toast="info">Info toast</vc-button>
+        <vc-button variant="secondary" data-toast="sticky">Sticky (no auto-dismiss)</vc-button>
+        <vc-button variant="secondary" id="demo-dismiss-all">Dismiss all</vc-button>
+      </div>
+      <p class="sg-note sg-narrow">
+        Stacks bottom-right (full-width on mobile). Auto-dismiss pauses on hover
+        <em>and</em> keyboard focus. Announced through a shared live region —
+        <code>success/info</code> polite, <code>error</code> assertive. Prefer this over
+        <code>alert()</code> in new code paths.
+      </p>
+      <table class="sg-api sg-narrow">
+        <thead>
+          <tr><th>API</th><th>Signature</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>Toast.show</code></td><td><code>({ title?, message, variant?, duration? }) → { dismiss }</code></td><td>duration <code>0</code> = sticky</td></tr>
+          <tr><td><code>Toast.success/error/info</code></td><td><code>(message, opts?)</code></td><td>Sugar over show()</td></tr>
+          <tr><td><code>Toast.dismissAll</code></td><td><code>()</code></td><td>Clears the stack</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ======================= DISCLOSURE ======================= -->
+  <section class="sg-section" id="disclosure">
+    <div class="container">
+      <div class="micro-label">05 / Disclosure</div>
+      <div class="sg-grid sg-grid--2">
+        <div>
+          <div class="sg-demo sg-demo--white">
+            <vc-disclosure summary="What documents do you need for ADR loads?">
+              A signed shipper declaration, UN number and class, emergency contact,
+              and a tremcard. We prepare the corridor-specific permit pack.
+            </vc-disclosure>
+            <vc-disclosure summary="How long does a Beitbridge crossing take?">
+              Typical clearance is 4–12 hours with pre-lodged documents. After-hours
+              dispatch means we stage the convoy to hit the post at first light.
+            </vc-disclosure>
+            <vc-disclosure summary="Do you carry dangerous goods insurance?" open>
+              Yes — full GIT cover is available on every corridor, with A-rated underwriters
+              and declared-value options for high-risk cargo.
+            </vc-disclosure>
+          </div>
+          <p class="sg-note">
+            WAI-ARIA accordion pattern: trigger is a real <code>&lt;button&gt;</code> with
+            <code>aria-expanded</code> + <code>aria-controls</code>; panel is a labelled
+            <code>region</code>. Keyboard: <span class="sg-kbd">Tab</span> +
+            <span class="sg-kbd">Enter</span> / <span class="sg-kbd">Space</span>.
+          </p>
+        </div>
+        <div>
+          <table class="sg-api">
+            <thead>
+              <tr><th>API</th><th>Kind</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>summary</code></td><td>attr</td><td>Header label text</td></tr>
+              <tr><td><code>open</code></td><td>attr / prop</td><td>Expanded state, reflected</td></tr>
+              <tr><td><code>toggle(force?)</code></td><td>method</td><td>Or open()/close via property</td></tr>
+              <tr><td><code>vc:open</code> / <code>vc:close</code></td><td>event</td><td>Bubble; fire on user toggle</td></tr>
+            </tbody>
+          </table>
+          <pre class="sg-demo sg-pre"><code>&lt;vc-disclosure summary="Permits"&gt;
+  SANRAL + CBRTA pack, pre-lodged.
+&lt;/vc-disclosure&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= SKELETON + EMPTY ======================= -->
+  <section class="sg-section" id="states">
+    <div class="container">
+      <div class="micro-label">06 / Loading &amp; empty states</div>
+      <div class="sg-grid sg-grid--3">
+        <div>
+          <h3 class="sg-h3">Media skeleton</h3>
+          <vc-skeleton media height="160px"></vc-skeleton>
+          <p class="sg-note">Layout-stable placeholder while images/panels fetch.</p>
+        </div>
+        <div>
+          <h3 class="sg-h3">Text skeleton</h3>
+          <vc-skeleton lines="4"></vc-skeleton>
+          <p class="sg-note">Paragraph block with a natural ragged last line.</p>
+        </div>
+        <div>
+          <h3 class="sg-h3">Avatar skeleton</h3>
+          <div class="sg-avatar-row">
+            <vc-skeleton circle width="56px"></vc-skeleton>
+            <vc-skeleton width="120px" height="16px" radius="4px"></vc-skeleton>
+          </div>
+          <p class="sg-note">Reduced-motion users get a static block (no shimmer).</p>
+        </div>
+      </div>
+
+      <div class="sg-grid sg-grid--2 sg-mt">
+        <div>
+          <vc-empty
+            title="No corridors yet"
+            description="When you request a route plan, matching corridors will appear here."
+            icon="route">
+            <vc-button slot="action" variant="primary" href="contact.html">Request a route plan</vc-button>
+          </vc-empty>
+        </div>
+        <div>
+          <vc-empty
+            tone="inline"
+            title="0 case studies match"
+            description="Try clearing filters or search all corridors."
+            icon="search_off">
+            <vc-button slot="action" variant="secondary" id="demo-reset-empty">Reset filters</vc-button>
+          </vc-empty>
+        </div>
+      </div>
+      <p class="sg-note sg-narrow">
+        Empty states always name the situation and offer a next action when one exists.
+        Skeletons are <code>aria-hidden</code> — pair them with a visible
+        <code>role="status"</code> “Loading…” elsewhere, never announce shimmer frames.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= BADGES ======================= -->
+  <section class="sg-section" id="badges">
+    <div class="container">
+      <div class="micro-label">07 / Badge</div>
+      <div class="sg-demo sg-row">
+        <vc-badge>Neutral</vc-badge>
+        <vc-badge variant="success" dot>Accredited</vc-badge>
+        <vc-badge variant="danger" dot>ADR Class 8</vc-badge>
+        <vc-badge variant="warning">Permit pending</vc-badge>
+        <vc-badge variant="info">Cross-border</vc-badge>
+        <vc-badge variant="success" size="sm" dot>On time</vc-badge>
+      </div>
+      <p class="sg-note">
+        Non-interactive status token. Colour is never the only signal — pair with text
+        (and <code>dot</code> only as reinforcement). Default <code>role="status"</code>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= COMPOSITION ======================= -->
+  <section class="sg-section" id="composition">
+    <div class="container">
+      <div class="micro-label">08 / Composition</div>
+      <div class="sg-grid sg-grid--2">
+        <div>
+          <div class="sg-demo sg-demo--white">
+            <div class="sg-composed">
+              <vc-skeleton circle width="48px" height="48px"></vc-skeleton>
+              <div class="sg-composed-body">
+                <vc-skeleton width="60%" height="14px" radius="4px"></vc-skeleton>
+                <div class="sg-spacer-sm"></div>
+                <vc-skeleton width="90%" height="12px" radius="4px"></vc-skeleton>
+                <div class="sg-spacer-sm"></div>
+                <vc-skeleton width="40%" height="12px" radius="4px"></vc-skeleton>
+              </div>
+            </div>
+            <div class="sg-spacer"></div>
+            <vc-skeleton media height="120px"></vc-skeleton>
+          </div>
+          <p class="sg-note">Card loading: avatar + text lines + media, geometry matches the loaded card to avoid CLS.</p>
+        </div>
+        <div>
+          <div class="sg-demo sg-demo--dark sg-metric-dark">
+            <div class="sg-row">
+              <vc-badge variant="success" dot>Live</vc-badge>
+              <vc-counter value="98.7" format="percent" decimals="1"
+                          aria-label="Control tower uptime"></vc-counter>
+            </div>
+            <p class="sg-note">Components inherit surrounding tokens — dark panels need no forked styles.</p>
+            <div class="sg-row sg-mt-sm">
+              <vc-button variant="light">Light on dark</vc-button>
+              <vc-button variant="primary">Primary</vc-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-band-content">
+        <h2>Ship the system<span class="red-dot">.</span></h2>
+        <p>Full API reference, architecture rules, and contribution checklist live in the architecture docs.</p>
+        <a href="docs/COMPONENTS.md" class="btn-primary light">
+          Component docs
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <a href="index.html" class="footer-wordmark">
+        <span class="vision">Vision</span><span class="connect">Connect</span><span class="dot">.</span>
+      </a>
+      <p class="footer-tagline">
+        Dangerous goods. Abnormal loads. Cross-border freight. Southern Africa.
+      </p>
+      <hr class="footer-hr">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-col-title">Services</div>
+          <ul>
+            <li><a href="capabilities.html#dangerous-goods">Dangerous Goods</a></li>
+            <li><a href="capabilities.html#abnormal-loads">Abnormal Loads</a></li>
+            <li><a href="capabilities.html#cross-border">Cross-Border</a></li>
+            <li><a href="capabilities.html#bulk">Bulk / Grain</a></li>
+            <li><a href="capabilities.html#containerised">Containers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Corridors</div>
+          <ul>
+            <li><a href="corridors.html#south-africa">South Africa</a></li>
+            <li><a href="corridors.html#botswana">Botswana</a></li>
+            <li><a href="corridors.html#namibia">Namibia</a></li>
+            <li><a href="corridors.html#zambia">Zambia</a></li>
+            <li><a href="corridors.html#zimbabwe">Zimbabwe</a></li>
+            <li><a href="corridors.html#mozambique">Mozambique</a></li>
+            <li><a href="corridors.html#malawi">Malawi</a></li>
+            <li><a href="corridors.html#drc">DRC</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#leadership">Leadership</a></li>
+            <li><a href="fleet.html">Fleet</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="ui.html">UI Kit</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Legal</div>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">POPIA Compliance</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="footer-hr">
+      <div class="footer-legal">
+        Vision Connect Logistics (Pty) Ltd. Reg: 2016/xxxxxx/07. VAT: 41xxxxxxxxx
+
+        Block C, Stoneridge Office Park, Greenstone, Modderfontein, Johannesburg, Gauteng, 1609
+
+        RTMS Accreditation: RTMS/xxxx. CBRTA Permit: CBR/xxxx. FESARTA Member.
+      </div>
+      <div class="footer-emergency">
+        After Hours / Emergency: <span>+27 78 118 8828</span>
+      </div>
+      <div class="footer-emergency footer-emergency--tight">
+        Email: <span>logic@visionconnect.africa</span>
+      </div>
+      <hr class="footer-hr">
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          © 2025 Vision Connect. All rights reserved.
+
+          POPIA: This site does not use tracking cookies without consent.
+        </div>
+        <div class="footer-red-dot"></div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/ui.js"></script>
+  <script type="module">
+    // Style-guide demos only — not part of the component library.
+    import { Toast } from './assets/js/components/index.js';
+
+    // Async submit: loading → success toast → reset (double-submit safe).
+    const submit = document.getElementById('demo-submit');
+    submit?.addEventListener('click', async () => {
+      if (submit.loading) return;
+      submit.loading = true;
+      await new Promise((r) => setTimeout(r, 1400));
+      submit.loading = false;
+      Toast.success('Request received. We will respond within 24 hours with a route plan and firm quote.');
+    });
+
+    // Validate every field in section 03.
+    document.getElementById('demo-validate')?.addEventListener('click', () => {
+      const fields = [...document.querySelectorAll('#fields vc-field')];
+      let firstBad = null;
+      fields.forEach((f) => {
+        const ok = f.validate();
+        if (!ok && !firstBad) firstBad = f;
+      });
+      if (firstBad) {
+        firstBad.focus();
+        Toast.error('Please fix the highlighted fields.');
+      } else {
+        Toast.success('All fields look good.');
+      }
+    });
+
+    // Toast demos
+    document.querySelectorAll('[data-toast]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const kind = btn.getAttribute('data-toast');
+        if (kind === 'success') Toast.success('Corridor plan ready for review.');
+        else if (kind === 'error') Toast.error('Could not reach the control tower. Retry in 30s.');
+        else if (kind === 'info') Toast.info('3 permits pre-lodged for Beitbridge.');
+        else Toast.show({
+          title: 'Dispatch hold',
+          message: 'Convoy staged until sunrise. This toast stays until dismissed.',
+          variant: 'warning',
+          duration: 0,
+        });
+      });
+    });
+    document.getElementById('demo-dismiss-all')?.addEventListener('click', () => Toast.dismissAll());
+    document.getElementById('demo-reset-empty')?.addEventListener('click', () => {
+      Toast.info('Filters reset — showing all corridors.');
+    });
+  </script>
+</body>
+</html>

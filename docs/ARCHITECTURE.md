@@ -36,9 +36,10 @@ visionconnect/
     │   │   ├── wordmark.css        #   Wordmark (navbar + footer variants)
     │   │   ├── cta-link.css        #   Uppercase CTA link with icon
     │   │   ├── btn-primary.css     #   Solid/outline CTA buttons (+ light variant)
-    │   │   └── order-form.css      #   Multi-step order form (steps, inputs,
-    │   │                           #   radio pills, dimensions, submit + its
-    │   │                           #   own responsive rules)
+    │   │   ├── order-form.css      #   Multi-step order form (steps, inputs,
+    │   │   │                       #   radio pills, dimensions, submit + its
+    │   │   │                       #   own responsive rules)
+    │   │   └── ui.css              #   All vc-* Web Component styles (tokens only)
     │   ├── sections/               # Layer 3: page sections (one file each)
     │   │   ├── pre-header.css
     │   │   ├── navbar.css
@@ -58,19 +59,33 @@ visionconnect/
     │   │   └── footer.css
     │   └── accessibility.css        # Layer 4: focus + reduced-motion (imports last)
     └── js/
-        ├── main.js                 # Composition root — the ONLY <script>.
+        ├── main.js                 # Composition root for page features.
         │                           # Imports features and boots them in order.
+        ├── ui.js                   # Opt-in component root (idempotent) —
+        │                           # loads only on pages that use <vc-*>.
         ├── core/                   # Layer A: stateless utilities
-        │   └── animate-count.js    #   Eased count-up animation (pure display)
-        └── features/               # Layer B: one module per interactive feature
+        │   ├── animate-count.js    #   Eased count-up animation (pure display)
+        │   └── a11y.js             #   prefersReducedMotion, announce(), uid()
+        ├── components/             # Layer B: Web Components (see COMPONENTS.md)
+        │   ├── button.js           #   <vc-button> variants/loading/href
+        │   ├── counter.js          #   <vc-counter> viewport-once metrics
+        │   ├── field.js            #   <vc-field> label/hint/error wiring
+        │   ├── toast.js            #   <vc-toast> + Toast service
+        │   ├── disclosure.js       #   <vc-disclosure> accordion item
+        │   ├── skeleton.js         #   <vc-skeleton> loading placeholders
+        │   ├── empty-state.js      #   <vc-empty> zero-data states
+        │   ├── badge.js            #   <vc-badge> status tokens
+        │   └── index.js            #   registerComponents() barrel
+        └── features/               # Layer C: one module per interactive feature
             ├── navbar-scroll.js    #   Sticky navbar scroll state (guarded)
             ├── proof-counters.js   #   Landing proof + about number counters
             └── order-form.js       #   Radio pills + validation + submit (guarded)
 ```
 
-All seven pages link only `assets/css/main.css` and load only
-`assets/js/main.js` (as an ES module). Inner pages carry content classes;
-the shared script is feature-guarded so it is safe on every page.
+Product pages link `assets/css/main.css` and load `assets/js/main.js` (as an
+ES module). Pages that use `<vc-*>` tags additionally load `assets/js/ui.js`.
+Inner pages carry content classes; the shared feature script is guarded so it
+is safe on every page.
 
 ---
 
@@ -151,6 +166,11 @@ accessibility   layout)               main.js imports features — nothing
 * **Execution timing preserved.** Module scripts execute after document
   parsing, before `DOMContentLoaded` — the same window as the original
   end-of-body inline script.
+* **Component layer is additive.** `js/components/` + `js/ui.js` form a second,
+  opt-in composition root beside `main.js`. Components import `core/` only —
+  never features or pages — so the parity pages (which never load `ui.js`)
+  keep their original runtime graph. Full props/API and usage docs:
+  [COMPONENTS.md](COMPONENTS.md).
 
 ---
 
@@ -199,7 +219,8 @@ against byte-accurate copies of the production delivery:
 | **JS** | Marker checks against the shared `scripts.js` (v3 deltas over v2) | **All markers present**: navbar guard, `.about-number-value` selector, `t`-suffix branch, radio group scoping, form guard, both alerts, `target + suffix` |
 | **Module graph** | Resolve every `import`; `node --check` all modules | All resolved; syntax OK on all **5** JS modules + baseline script |
 | **Multi-page structure** | Nav/footer/pre-header uniformity across all **7** pages; per-page `active` state; internal link + anchor integrity | **All pass** |
-| **Runtime** | Serve site, fetch all **7** pages + entry CSS/JS + **24** `main.css` imports | All **HTTP 200** |
+| **Runtime** | Serve site, fetch all **7** pages + entry CSS/JS + `main.css` imports | All **HTTP 200** |
+| **Component library (additive)** | `ui.html` style guide + `vc-*` modules checked separately (`node --check`, HTTP 200, 0 inline styles on product pages) | Style guide ships; parity suites remain green (`EXPECTED_ADDS` now = 12 de-inlines + `ui.css`) |
 
 ### Documented exception: uniform multi-page navigation
 
