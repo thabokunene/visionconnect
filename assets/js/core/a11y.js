@@ -14,9 +14,38 @@ export function announceText(value) {
 }
 
 /**
- * Create (or reuse) a single polite live region on <body>.
- * Toasts, counters and async status updates all announce through here so
+ * Visually-hidden live-region styling shared by polite + assertive channels.
+ * One definition — no duplicated Object.assign blocks.
+ */
+const LIVE_REGION_STYLE = Object.freeze({
+  position: 'absolute',
+  width: '1px',
+  height: '1px',
+  padding: 0,
+  margin: '-1px',
+  overflow: 'hidden',
+  clip: 'rect(0 0 0 0)',
+  whiteSpace: 'nowrap',
+  border: 0,
+});
+
+function createLiveRegion({ role, live }) {
+  const region = document.createElement('div');
+  region.setAttribute('role', role);
+  region.setAttribute('aria-live', live);
+  region.setAttribute('aria-atomic', 'true');
+  Object.assign(region.style, LIVE_REGION_STYLE);
+  document.body.appendChild(region);
+  return region;
+}
+
+/**
+ * Single polite / assertive announcement channel for the whole app.
+ * Toasts, async status updates and future services announce through here so
  * screen readers get one predictable channel instead of N competing ones.
+ *
+ * Callers must not ALSO put role="status"/"alert" on visible UI that repeats
+ * the same message — that double-announces.
  */
 let politeRegion = null;
 let assertiveRegion = null;
@@ -26,23 +55,8 @@ export function announce(message, { assertive = false } = {}) {
   if (!text) return;
 
   if (assertive) {
-    if (!assertiveRegion) {
-      assertiveRegion = document.createElement('div');
-      assertiveRegion.setAttribute('role', 'alert');
-      assertiveRegion.setAttribute('aria-live', 'assertive');
-      assertiveRegion.setAttribute('aria-atomic', 'true');
-      Object.assign(assertiveRegion.style, {
-        position: 'absolute',
-        width: '1px',
-        height: '1px',
-        padding: 0,
-        margin: '-1px',
-        overflow: 'hidden',
-        clip: 'rect(0 0 0 0)',
-        whiteSpace: 'nowrap',
-        border: 0,
-      });
-      document.body.appendChild(assertiveRegion);
+    if (!assertiveRegion || !assertiveRegion.isConnected) {
+      assertiveRegion = createLiveRegion({ role: 'alert', live: 'assertive' });
     }
     assertiveRegion.textContent = '';
     // Force a DOM change so repeated identical messages re-announce.
@@ -50,23 +64,8 @@ export function announce(message, { assertive = false } = {}) {
     return;
   }
 
-  if (!politeRegion) {
-    politeRegion = document.createElement('div');
-    politeRegion.setAttribute('role', 'status');
-    politeRegion.setAttribute('aria-live', 'polite');
-    politeRegion.setAttribute('aria-atomic', 'true');
-    Object.assign(politeRegion.style, {
-      position: 'absolute',
-      width: '1px',
-      height: '1px',
-      padding: 0,
-      margin: '-1px',
-      overflow: 'hidden',
-      clip: 'rect(0 0 0 0)',
-      whiteSpace: 'nowrap',
-      border: 0,
-    });
-    document.body.appendChild(politeRegion);
+  if (!politeRegion || !politeRegion.isConnected) {
+    politeRegion = createLiveRegion({ role: 'status', live: 'polite' });
   }
   politeRegion.textContent = '';
   requestAnimationFrame(() => { politeRegion.textContent = text; });

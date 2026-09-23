@@ -197,7 +197,7 @@ Toast.dismissAll();
 |---|---|
 | Placement | Fixed host `#vc-toast-host`, stacks, full-width ≤768px |
 | Timing | Auto-dismiss pauses on hover **and** focus-within |
-| A11y | Host is a labelled region; success/info → `role="status"`, error → `role="alert"` + assertive announce |
+| A11y | **Single channel:** host is a labelled region; the toast node itself is *not* a live region — `Toast.show` announces once via `core/a11y` (`polite`, or **assertive** for `error`). Never add `role="status"`/`alert` on the toast as well (that double-announces) |
 | Dupes | Safe to call from anywhere; each call is an independent node |
 
 > **Parity note:** the landing/contact order-form still uses production
@@ -210,7 +210,7 @@ Toast.dismissAll();
 |---|---|---|
 | `summary` | attr | Header text |
 | `open` | attr + prop | Expanded state |
-| `toggle(force?)` | method | Expand/collapse |
+| `toggle(force?)` / `show()` / `hide()` | methods | Expand/collapse |
 | `vc:open` / `vc:close` | events | On user-driven toggle |
 
 Implements the WAI-ARIA accordion item pattern (`button[aria-expanded]`
@@ -272,6 +272,9 @@ assets/js/ui.js                  opt-in composition root
 assets/css/components/ui.css     all vc-* styles (imported by main.css)
 ui.html                          living style guide
 docs/COMPONENTS.md               this document
+docs/ENGINEERING_REVIEW.md       architecture audit + performance/debug findings
+tools/flatten_css.py             @import → single-file CSS for production deploys
+assets/css/dist/main.flat.css    generated flat bundle (run tool to refresh)
 ```
 
 ### 3.2 Loading the library

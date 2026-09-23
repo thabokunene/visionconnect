@@ -7,6 +7,14 @@
  *  listener guarded so pages without #quote are safe — shared script.)
  */
 
+/** Clear `.checked` on every radio pill in the same named group. */
+function clearGroupChecked(group) {
+  document.querySelectorAll('input[name="' + group + '"]').forEach(i => {
+    const l = i.closest('.radio-option');
+    if (l) l.classList.remove('checked');
+  });
+}
+
 function initRadioPills() {
   // Radio option visual state
   document.querySelectorAll('.radio-option').forEach(label => {
@@ -14,10 +22,7 @@ function initRadioPills() {
     if (input) {
       input.addEventListener('change', () => {
         const group = input.getAttribute('name');
-        document.querySelectorAll('input[name="' + group + '"]').forEach(i => {
-          const l = i.closest('.radio-option');
-          if (l) l.classList.remove('checked');
-        });
+        clearGroupChecked(group);
         if (input.checked) label.classList.add('checked');
       });
     }
@@ -32,6 +37,7 @@ function initSubmitHandler() {
       e.preventDefault();
 
       // Simple validation feedback
+      // (Exact assignment lines are parity markers — do not rewrite to consts.)
       const required = e.target.querySelectorAll('[required]');
       let valid = true;
       required.forEach(field => {

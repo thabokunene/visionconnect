@@ -35,6 +35,8 @@ export class VcCounter extends HTMLElement {
   #raf = 0;
   #started = false;
   #done = false;
+  /** True when we generated aria-label — only then may we rewrite it. */
+  #autoLabel = false;
 
   constructor() {
     super();
@@ -53,6 +55,7 @@ export class VcCounter extends HTMLElement {
     const id = this.id || uid('vc-counter');
     if (!this.id) this.id = id;
     if (!label) {
+      this.#autoLabel = true;
       this.setAttribute('aria-label', this.#format(this.#target()));
     }
 
@@ -78,8 +81,10 @@ export class VcCounter extends HTMLElement {
     this.#renderStatic(this.#target());
     if (this.hasAttribute('start')) this.#start();
     else if (!this.#observer) this.#observe();
-    const label = this.getAttribute('aria-label');
-    if (label != null) this.setAttribute('aria-label', this.#format(this.#target()));
+    // Rewrite only labels we generated; never clobber a consumer-supplied name.
+    if (this.#autoLabel) {
+      this.setAttribute('aria-label', this.#format(this.#target()));
+    }
   }
 
   get value() { return this.#target(); }

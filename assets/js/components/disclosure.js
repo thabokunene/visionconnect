@@ -17,7 +17,7 @@
  *   open : boolean
  *
  * Methods
- *   toggle() / open() / close()
+ *   toggle(force?) / show() / hide()   (property: open)
  *
  * Events
  *   vc:open  — just expanded
@@ -53,6 +53,10 @@ export class VcDisclosure extends HTMLElement {
 
   get open() { return this.hasAttribute('open'); }
   set open(v) { this.toggleAttribute('open', !!v); }
+
+  /** Programmatic aliases (property `open` already covers boolean set). */
+  show() { this.toggle(true); }
+  hide() { this.toggle(false); }
 
   toggle(force) {
     const next = typeof force === 'boolean' ? force : !this.open;

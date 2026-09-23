@@ -5,6 +5,11 @@
  * use and for the host to own dismiss wiring. Existing order-form alert()
  * behavior is intentionally untouched (parity).
  *
+ * Announcement contract (single channel — no double SR reads):
+ *   Visual toast does NOT use role="status"/"alert". Toast.show() announces
+ *   once through core/a11y announce() (assertive for errors). The host is a
+ *   plain labelled region so virtual-cursor users can still read the text.
+ *
  * Service
  *   import { Toast } from './toast.js';
  *   Toast.show({ title?, message, variant?, duration? }) → { dismiss }
@@ -94,18 +99,18 @@ export class VcToast extends HTMLElement {
     this.hidden = !open;
     this.setAttribute('data-variant', variant);
 
+    // Visible feedback only — announcement is Toast.show → announce() once.
+    if (open) this.setAttribute('aria-description', `${variant} notification`);
+    else this.removeAttribute('aria-description');
+
     const titleEl = this.querySelector('.vc-toast__title');
     const msgEl = this.querySelector('.vc-toast__message');
     titleEl.textContent = title;
     titleEl.hidden = !title;
     msgEl.textContent = message;
 
-    if (open) {
-      this.setAttribute('role', variant === 'error' ? 'alert' : 'status');
-      this.#armTimer();
-    } else {
-      this.#clearTimer();
-    }
+    if (open) this.#armTimer();
+    else this.#clearTimer();
   }
 
   #clearTimer() {
@@ -149,6 +154,7 @@ export const Toast = {
     mo.observe(el, { attributes: true, attributeFilter: ['open'] });
 
     host.appendChild(el);
+    // Single SR channel (see header). Polite for most; assertive for errors.
     announce([title, message].filter(Boolean).join('. '), {
       assertive: variant === 'error',
     });

@@ -79,7 +79,9 @@ export class VcEmpty extends HTMLElement {
     box.append(visual, copy);
     this.append(box);
 
-    this.setAttribute('role', 'status');
+    // Static zero-data UI — group (not live status) so SRs don't
+    // interrupt on initial paint; aria-label still provides the name.
+    this.setAttribute('role', 'group');
   }
 
   #sync() {

@@ -18,6 +18,8 @@
  *
  * Events
  *   click — native; not re-dispatched. Spinner/aria state updates first.
+ *   While loading/disabled the inner control suppresses activation
+ *   (pointer-events alone does not stop keyboard Enter on an <a>).
  *
  * Properties
  *   loading : boolean  (reflected)
@@ -38,8 +40,14 @@ export class VcButton extends HTMLElement {
   static observedAttributes = ['variant', 'size', 'loading', 'disabled', 'href', 'block'];
 
   #control = null;
-  #label = null;
   #busyId = null;
+  /** Capture-phase click blocker on the inner control (keyboard + mouse). */
+  #blockActivation = (event) => {
+    if (this.hasAttribute('loading') || this.hasAttribute('disabled')) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+  };
 
   constructor() {
     super();
@@ -97,7 +105,8 @@ export class VcButton extends HTMLElement {
     this.childNodes.forEach((n) => el.appendChild(n.cloneNode(true)));
     this.replaceChildren(el);
     this.#control = el;
-    this.#label = el;
+    // Capture phase beats default link navigation + other click listeners.
+    el.addEventListener('click', this.#blockActivation, true);
   }
 
   #sync() {
@@ -121,7 +130,9 @@ export class VcButton extends HTMLElement {
     el.classList.toggle('is-loading', loading);
 
     if (loading || disabled) {
-      el.setAttribute('disabled', '');
+      // Native disabled for <button>; aria-disabled + capture blocker for <a>.
+      if (el.tagName === 'BUTTON') el.setAttribute('disabled', '');
+      else el.removeAttribute('disabled');
       el.setAttribute('aria-disabled', 'true');
     } else {
       el.removeAttribute('disabled');
