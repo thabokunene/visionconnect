@@ -21,15 +21,16 @@ python3 -m http.server 8080
 | Page | Role |
 |---|---|
 | `index.html` | Landing: hero, capabilities strip, corridor map, fleet, case study, leadership, contact/order form |
-| `capabilities.html` | Five service detail sections (DG, abnormal, cross-border, bulk, containers) |
+| `capabilities.html` | Six service detail sections (DG, abnormal, cross-border, bulk, containers, driver supply) |
 | `corridors.html` | Interactive map + corridor group cards for eight SADC countries |
 | `fleet.html` | Full fleet configuration + compliance card grid |
 | `about.html` | Company story, number counters, leadership, values |
 | `case-studies.html` | Four full case study articles |
 | `contact.html` | Multi-step quote form + contact details sidebar |
+| `drivers.html` | Driver recruitment + temporary driver supply (application & hire forms) |
 | `ui.html` | Living style guide for the `vc-*` Web Component library (UI Kit) |
 
-All pages share one stylesheet entry (`assets/css/main.css`). Product pages
+All product pages share one stylesheet entry (`assets/css/main.css`). Product pages
 add one script entry (`assets/js/main.js`); pages that use `<vc-*>` tags also
 load `assets/js/ui.js` (component registration only). Navigation, pre-header
 and footer are uniform across every page.
@@ -43,11 +44,13 @@ assets/css/core/         Tokens, reset, layout primitives
 assets/css/components/   Reusable UI (wordmark, CTA link, buttons, order form,
                          ui.css for all vc-* component styles)
 assets/css/sections/     One module per page section + its breakpoints
+                         (drivers.css = recruitment + temp supply page)
 assets/css/accessibility.css   Focus + reduced-motion (loads last)
 assets/js/main.js        JS composition root (page features)
 assets/js/ui.js          Component composition root (opt-in, idempotent)
 assets/js/core/          Stateless utilities (animate-count, a11y)
-assets/js/features/      One module per interactive feature (page-safe guards)
+assets/js/features/      One module per interactive feature (page-safe guards;
+                         order-form + driver-forms)
 assets/js/components/    Web Components: button, counter, field, toast,
                          disclosure, skeleton, empty-state, badge
 docs/ARCHITECTURE.md     Full architectural breakdown & scaling playbook

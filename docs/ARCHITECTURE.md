@@ -2,7 +2,7 @@
 
 > Rebuild of the original single-file production site into a modular, layered,
 > zero-build static multi-page front end, kept in lockstep with production
-> (latest: the full seven-page delivery — landing + six inner pages sharing one
+> (latest: the full multi-page delivery (8 product pages + ui.html style guide) — landing + six inner pages sharing one
 > stylesheet and one script). **Production behavior is unchanged** — see
 > [Behavior preservation](#behavior-preservation) for the verification method
 > and results.
@@ -21,6 +21,7 @@ visionconnect/
 ├── about.html                      # Inner page: story, numbers, leadership, values
 ├── case-studies.html               # Inner page: four full case articles
 ├── contact.html                    # Inner page: order form + contact details
+├── drivers.html                    # Inner page: recruitment + temporary driver supply
 ├── docs/
 │   └── ARCHITECTURE.md             # This document
 ├── README.md
@@ -56,7 +57,8 @@ visionconnect/
     │   │   ├── proof.css
     │   │   ├── contact.css
     │   │   ├── cta-band.css        #   Shared closing CTA on inner pages
-    │   │   └── footer.css
+    │   │   ├── footer.css
+    │   │   └── drivers.css        #   Driver tracks / temp supply / dual forms
     │   └── accessibility.css        # Layer 4: focus + reduced-motion (imports last)
     └── js/
         ├── main.js                 # Composition root for page features.
@@ -79,7 +81,8 @@ visionconnect/
         └── features/               # Layer C: one module per interactive feature
             ├── navbar-scroll.js    #   Sticky navbar scroll state (guarded)
             ├── proof-counters.js   #   Landing proof + about number counters
-            └── order-form.js       #   Radio pills + validation + submit (guarded)
+            ├── order-form.js       #   Radio pills + validation + submit (guarded)
+            └── driver-forms.js     #   Driver apply + hire forms (guarded)
 ```
 
 Product pages link `assets/css/main.css` and load `assets/js/main.js` (as an

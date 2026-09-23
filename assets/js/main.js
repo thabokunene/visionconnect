@@ -8,7 +8,9 @@
 import { initNavbarScroll } from './features/navbar-scroll.js';
 import { initProofCounters } from './features/proof-counters.js';
 import { initOrderForm } from './features/order-form.js';
+import { initDriverForms } from './features/driver-forms.js';
 
 initNavbarScroll();
 initProofCounters();
 initOrderForm();
+initDriverForms();

@@ -3379,6 +3379,402 @@ a.contact-block-text:hover {
 }
 
 
+/* --- sections/drivers.css --- */
+/* DRIVERS — Section: driver recruitment + temporary driver supply page
+ * (tracks, why-grid, temp supply panel, application/hire forms, checkbox pills).
+ * Form primitives (form-step, form-row, inputs, submit) come from
+ * components/order-form.css; this module only adds driver-page chrome.
+ * Responsive rules co-located at the bottom.
+ */
+
+/* ---------- Shared page bits ---------- */
+.micro-label.dark {
+  color: var(--light-grey);
+}
+
+.micro-label.dark::after {
+  background: var(--dark-border);
+}
+
+.form-intro,
+.form-intro-dark {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--mid-grey);
+  max-width: 720px;
+  margin-bottom: 64px;
+}
+
+.driver-application,
+.hire-application {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-width: 800px;
+}
+
+/* ---------- Two tracks ---------- */
+.driver-tracks {
+  padding: 120px 0;
+  background: var(--white);
+}
+
+.driver-tracks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.driver-track-card {
+  border: 1px solid var(--light-grey);
+  border-radius: 2px;
+  padding: 48px;
+  background: var(--white);
+  transition: border-color 240ms ease-out;
+}
+
+.driver-track-card:hover {
+  border-color: var(--ink);
+}
+
+.driver-track-icon {
+  margin-bottom: 24px;
+}
+
+.driver-track-icon .material-symbols-outlined {
+  font-size: 40px;
+  color: var(--ink);
+}
+
+.driver-track-card h2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.driver-track-card h2 .red-dot {
+  color: var(--signal-red);
+}
+
+.driver-track-card p {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+.driver-track-list {
+  list-style: none;
+  margin-bottom: 32px;
+}
+
+.driver-track-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink);
+  padding: 8px 0;
+  border-bottom: 0.5px solid var(--light-grey);
+}
+
+.driver-track-list li:last-child {
+  border-bottom: none;
+}
+
+.driver-track-list li .material-symbols-outlined {
+  font-size: 16px;
+  color: var(--signal-red);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/* ---------- Why drive with us ---------- */
+.driver-why {
+  padding: 120px 0;
+  background: var(--bone);
+}
+
+.driver-why h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 64px;
+  text-transform: uppercase;
+}
+
+.driver-why h2 .red-dot {
+  color: var(--signal-red);
+}
+
+.driver-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.driver-why-item {
+  border-top: 1px solid var(--ink);
+  padding-top: 24px;
+}
+
+.driver-why-number {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  color: var(--signal-red);
+  margin-bottom: 12px;
+}
+
+.driver-why-item h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.driver-why-item p {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--mid-grey);
+}
+
+/* ---------- Temporary driver supply ---------- */
+.temp-driver-section {
+  background: var(--ink);
+  padding: 120px 0;
+  color: var(--white);
+}
+
+.temp-driver-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.temp-driver-content h2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.temp-driver-content h2 .red-dot {
+  color: var(--signal-red);
+}
+
+.temp-driver-content p {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--light-grey);
+  margin-bottom: 20px;
+}
+
+.temp-driver-specs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border-top: 0.5px solid var(--dark-border);
+}
+
+.temp-spec {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 0.5px solid var(--dark-border);
+}
+
+.temp-spec-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--mid-grey);
+}
+
+.temp-spec-value {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--white);
+}
+
+.temp-driver-uses {
+  margin-bottom: 40px;
+}
+
+.temp-driver-uses-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--mid-grey);
+  margin-bottom: 16px;
+}
+
+.temp-uses-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.temp-use {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--light-grey);
+  padding: 10px 16px;
+  border: 0.5px solid var(--dark-border);
+  border-radius: 2px;
+}
+
+.temp-driver-image {
+  aspect-ratio: 4 / 5;
+  background:
+    url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop')
+    center / cover no-repeat;
+  filter: saturate(0.4) contrast(1.1);
+  border-radius: 2px;
+}
+
+/* ---------- Forms ---------- */
+.driver-form-section {
+  padding: 120px 0;
+  background: var(--white);
+}
+
+.hire-form-section {
+  padding: 120px 0;
+  background: var(--bone);
+}
+
+.driver-form-section h2,
+.hire-form-section h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.driver-form-section h2 .red-dot,
+.hire-form-section h2 .red-dot {
+  color: var(--signal-red);
+}
+
+/* Checkbox pills (multi-select rows) */
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--ink);
+  padding: 10px 14px;
+  border: 1px solid var(--light-grey);
+  border-radius: 2px;
+  background: var(--white);
+  cursor: pointer;
+  transition: border-color 200ms ease-out, background 200ms ease-out;
+}
+
+.checkbox-option:hover {
+  border-color: var(--mid-grey);
+}
+
+.checkbox-option input[type="checkbox"] {
+  accent-color: var(--signal-red);
+  cursor: pointer;
+  margin: 0;
+}
+
+/* Standalone consent pill under a textarea */
+.checkbox-option--spaced {
+  margin-top: 8px;
+}
+
+/* Invalid field feedback (parity pattern: JS sets inline borderColor;
+ * class fallback when authors prefer CSS-only) */
+.is-invalid .form-input,
+.is-invalid .form-select,
+.is-invalid .form-textarea {
+  border-color: var(--signal-red);
+}
+
+/* ---------- Capabilities: driver supply image modifier ---------- */
+.service-detail-image--driver-supply {
+  background-image: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop');
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .driver-tracks-grid { grid-template-columns: 1fr; }
+  .driver-why-grid { grid-template-columns: repeat(2, 1fr); }
+  .temp-driver-grid { grid-template-columns: 1fr; gap: 48px; }
+  .temp-driver-image { aspect-ratio: 16 / 9; }
+  .checkbox-group { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .driver-tracks { padding: 80px 0; }
+  .driver-why { padding: 80px 0; }
+  .temp-driver-section { padding: 80px 0; }
+  .driver-form-section { padding: 80px 0; }
+  .hire-form-section { padding: 80px 0; }
+
+  .driver-track-card { padding: 32px 24px; }
+  .driver-track-card h2 { font-size: 28px; line-height: 36px; }
+  .driver-why h2 { font-size: 32px; line-height: 40px; }
+  .driver-why-grid { grid-template-columns: 1fr; gap: 32px; }
+  .temp-driver-content h2 { font-size: 32px; line-height: 40px; }
+  .temp-spec { grid-template-columns: 1fr; gap: 4px; }
+  .temp-uses-grid { grid-template-columns: 1fr; }
+  .driver-form-section h2,
+  .hire-form-section h2 { font-size: 32px; line-height: 40px; }
+  .checkbox-group { grid-template-columns: 1fr; }
+}
+
+
 
 /* --- accessibility.css --- */
 /* ACCESSIBILITY — Accessibility: focus visibility + reduced-motion overrides (last in cascade). */
