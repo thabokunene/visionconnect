@@ -1,0 +1,100 @@
+/* PRE-HEADER — Section: utility pre-header (control tower line, lang, quote link). */
+
+.pre-header {
+  background: var(--ink);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--bone);
+}
+
+.pre-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 32px;
+}
+
+.pre-header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.pre-header-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pre-header-item .material-symbols-outlined {
+  font-size: 14px;
+  color: var(--mid-grey);
+}
+
+.pre-header-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.lang-toggle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.lang-toggle a {
+  color: var(--bone);
+  text-decoration: none;
+  font-weight: 700;
+  padding-bottom: 2px;
+}
+
+.lang-toggle a.active {
+  border-bottom: 1px solid var(--signal-red);
+}
+
+.pre-header-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--bone);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 240ms ease-out;
+}
+
+.pre-header-link .material-symbols-outlined {
+  font-size: 16px;
+  color: var(--bone);
+  transition: transform 240ms ease-out, color 240ms ease-out;
+}
+
+.pre-header-link:hover {
+  color: var(--signal-red);
+}
+
+.pre-header-link:hover .material-symbols-outlined {
+  color: var(--signal-red);
+  transform: translateX(4px);
+}
+
+.pre-header-divider {
+  width: 0.5px;
+  height: 16px;
+  background: var(--dark-border);
+}
+
+@media (max-width: 768px) {
+  .pre-header .container { justify-content: center; gap: 16px; }
+  .pre-header-right { display: none; }
+  .pre-header-divider { display: none; }
+  .pre-header-left { gap: 16px; }
+}

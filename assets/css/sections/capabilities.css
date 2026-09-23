@@ -1,0 +1,138 @@
+/* CAPABILITIES — Section: capabilities service table. */
+
+.capabilities {
+  padding: var(--section-pad) 0;
+  background: var(--white);
+}
+
+.capabilities h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 64px;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.capabilities h2 .red-dot {
+  color: var(--signal-red);
+}
+
+.capabilities-intro {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--mid-grey);
+  max-width: 680px;
+  margin-bottom: 64px;
+  grid-column: 2 / 11;
+}
+
+.cap-table {
+  width: 100%;
+  border-collapse: collapse;
+  grid-column: 2 / 11;
+}
+
+.cap-table thead th {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--mid-grey);
+  text-align: left;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+/* Column widths (moved from inline style attributes) */
+.cap-table thead th:nth-child(1) { width: 30%; }
+.cap-table thead th:nth-child(2) { width: 20%; }
+.cap-table thead th:nth-child(3) { width: 22%; }
+.cap-table thead th:nth-child(4) { width: 16%; }
+.cap-table thead th:nth-child(5) { width: 8%; }
+.cap-table thead th:nth-child(6) { width: 4%; }
+
+.cap-table tbody tr {
+  border-bottom: 0.5px solid var(--light-grey);
+  transition: background 240ms ease-out;
+  cursor: pointer;
+}
+
+.cap-table tbody tr:hover {
+  background: #FAFAFA;
+}
+
+.cap-table tbody tr:hover .cap-arrow .material-symbols-outlined {
+  color: var(--signal-red);
+}
+
+.cap-table td {
+  padding: 32px 0;
+  vertical-align: top;
+}
+
+.cap-service {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cap-service .material-symbols-outlined {
+  font-size: 18px;
+  color: var(--mid-grey);
+  transition: color 240ms ease-out;
+}
+
+.cap-table tbody tr:hover .cap-service .material-symbols-outlined {
+  color: var(--signal-red);
+}
+
+.cap-sub {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--mid-grey);
+  margin-top: 4px;
+  line-height: 22px;
+}
+
+.cap-cell {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--ink);
+}
+
+.cap-arrow {
+  text-align: right;
+}
+
+.cap-arrow .material-symbols-outlined {
+  font-size: 18px;
+  color: var(--mid-grey);
+  transition: color 240ms ease-out, transform 240ms ease-out;
+}
+
+.cap-table tbody tr:hover .cap-arrow .material-symbols-outlined {
+  transform: translate(4px, -4px);
+}
+
+@media (max-width: 768px) {
+  .capabilities h2 { font-size: 32px; line-height: 40px; }
+  .cap-table { display: block; overflow-x: auto; }
+  .cap-table thead { display: none; }
+  .cap-table tbody tr { display: block; padding: 24px 0; }
+  .cap-table td { display: block; padding: 6px 0; }
+  .cap-table td:first-child { padding-top: 0; }
+  .cap-arrow { text-align: left; padding-top: 12px; }
+}

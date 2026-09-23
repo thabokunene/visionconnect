@@ -1,0 +1,45 @@
+/* WORDMARK — Component: VisionConnect wordmark (navbar + footer variants). */
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  padding-top: 2px;
+  line-height: 1;
+}
+
+.wordmark .vision {
+  color: var(--ink);
+}
+
+.wordmark .connect {
+  color: var(--mid-grey);
+}
+
+.wordmark .dot {
+  color: var(--signal-red);
+}
+
+.footer-wordmark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.footer-wordmark .vision {
+  color: var(--white);
+}
+
+.footer-wordmark .connect {
+  color: var(--mid-grey);
+}
+
+.footer-wordmark .dot {
+  color: var(--signal-red);
+}

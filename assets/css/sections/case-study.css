@@ -1,0 +1,211 @@
+/* CASE-STUDY — Section: featured case study. */
+
+.case-study {
+  padding: var(--section-pad) 0;
+  background: var(--white);
+}
+
+.case-study h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 64px;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.case-study h2 .red-dot {
+  color: var(--signal-red);
+}
+
+.case-study-sub {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.02em;
+  color: var(--mid-grey);
+  margin-bottom: 64px;
+  text-transform: uppercase;
+}
+
+.case-image {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  background:
+    linear-gradient(160deg, rgba(10,10,10,0.2), rgba(10,10,10,0.4)),
+    url('https://images.unsplash.com/photo-1591768793355-74d04bb6608f?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+  filter: saturate(0.5) contrast(1.1);
+  border-radius: 2px;
+  margin-bottom: 48px;
+}
+
+.case-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-bottom: 64px;
+}
+
+.case-stat {
+  border-top: 0.5px solid var(--light-grey);
+  padding-top: 20px;
+}
+
+.case-stat-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--mid-grey);
+  margin-bottom: 8px;
+}
+
+.case-stat-value {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 28px;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.case-narrative {
+  max-width: 680px;
+  margin-bottom: 48px;
+}
+
+.case-section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--ink);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.case-section-title::after {
+  content: '';
+  width: 40px;
+  height: 0.5px;
+  background: var(--light-grey);
+}
+
+.case-text {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--ink);
+  margin-bottom: 40px;
+}
+
+.case-results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.case-result {
+  border-top: 0.5px solid var(--light-grey);
+  padding-top: 20px;
+}
+
+.case-result-number {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.case-result-number.red {
+  color: var(--signal-red);
+}
+
+.case-result-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--mid-grey);
+}
+
+.case-nav {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 0.5px solid var(--light-grey);
+}
+
+.case-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mid-grey);
+  text-decoration: none;
+  transition: color 240ms ease-out;
+}
+
+.case-nav-link .material-symbols-outlined {
+  font-size: 18px;
+  color: var(--mid-grey);
+  transition: transform 240ms ease-out, color 240ms ease-out;
+}
+
+.case-nav-link:hover {
+  color: var(--signal-red);
+}
+
+.case-nav-link:hover .material-symbols-outlined {
+  color: var(--signal-red);
+}
+
+.case-nav-link.prev:hover .material-symbols-outlined {
+  transform: translateX(-4px);
+}
+
+.case-nav-link.next:hover .material-symbols-outlined {
+  transform: translateX(4px);
+}
+
+.case-nav-link.center {
+  color: var(--ink);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.case-nav-link.center:hover {
+  color: var(--signal-red);
+}
+
+@media (max-width: 768px) {
+  .case-study h2 { font-size: 32px; line-height: 40px; }
+  .case-study-sub { font-size: 32px; line-height: 40px; }
+
+  .case-stats { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .case-results { grid-template-columns: 1fr; gap: 24px; }
+  .case-result-number { font-size: 40px; }
+
+  .case-nav { flex-wrap: wrap; gap: 24px; }
+  .case-nav-link.center { margin-left: 0; margin-right: 0; }
+}
+
+@media (max-width: 480px) {
+  .case-stats { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,27 @@
+/* TOKENS — Design tokens: color, typography, spacing (single source of truth). */
+
+:root {
+  --ink: #0A0A0A;
+  --mid-grey: #6B7280;
+  --light-grey: #E5E7EB;
+  --bone: #F5F5F4;
+  --white: #FFFFFF;
+  --signal-red: #D42B1E;
+  --dark-border: #333333;
+  --dark-surface: #111111;
+
+  --font-display: 'Roboto', sans-serif;
+  --font-body: 'Lato', sans-serif;
+
+  --section-pad: 160px;
+  --container-max: 1200px;
+  --gutter: 24px;
+}
+
+@media (max-width: 1024px) {
+  :root { --section-pad: 120px; }
+}
+
+@media (max-width: 768px) {
+  :root { --section-pad: 80px; }
+}

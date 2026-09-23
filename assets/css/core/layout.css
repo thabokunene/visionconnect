@@ -1,0 +1,50 @@
+/* LAYOUT — Layout primitives: container, 12-col grid, micro-label. */
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+}
+
+.col-2-3 {
+  grid-column: 2 / 4;
+}
+
+.col-2-6 {
+  grid-column: 2 / 7;
+}
+
+.micro-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mid-grey);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.micro-label::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: var(--light-grey);
+}
+
+/* Variant: extra top spacing (e.g. stacked label groups) */
+.micro-label--spaced {
+  margin-top: 48px;
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+}

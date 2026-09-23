@@ -1,0 +1,62 @@
+/* TRUST-BAR — Section: client logos + accreditations trust bar. */
+
+.trust-bar {
+  background: var(--bone);
+  padding: 64px 0;
+}
+
+.trust-bar .micro-label {
+  margin-bottom: 32px;
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.logo-item {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--mid-grey);
+  filter: grayscale(100%);
+  opacity: 0.5;
+  transition: opacity 240ms ease-out, filter 240ms ease-out;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.logo-item:hover {
+  opacity: 1; filter: grayscale(0%);
+}
+
+.accred-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+}
+
+.accred-item {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mid-grey);
+}
+
+@media (max-width: 768px) {
+  .logo-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .accred-grid { gap: 20px; }
+  .accred-item { font-size: 11px; }
+}
+
+@media (max-width: 480px) {
+  .logo-grid { grid-template-columns: repeat(2, 1fr); }
+}

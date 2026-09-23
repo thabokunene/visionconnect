@@ -1,0 +1,29 @@
+/* CTA-LINK — Component: uppercase CTA link with trailing icon. */
+
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  transition: color 240ms ease-out;
+}
+
+.cta-link .material-symbols-outlined {
+  font-size: 18px;
+  color: var(--white);
+  transition: transform 240ms ease-out;
+}
+
+.cta-link:hover {
+  color: var(--signal-red);
+}
+
+.cta-link:hover .material-symbols-outlined {
+  transform: translateX(6px);
+}

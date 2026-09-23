@@ -1,0 +1,67 @@
+/* PROOF — Section: proof metrics ticker. */
+
+.proof-ticker {
+  background: var(--ink);
+  padding: 80px 0;
+}
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+
+.proof-item {
+  padding: 0 32px;
+  position: relative;
+}
+
+.proof-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.5px;
+  height: 80px;
+  background: var(--dark-border);
+}
+
+.proof-number {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 72px;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.proof-number.red {
+  color: var(--signal-red);
+}
+
+.proof-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.20em;
+  color: var(--mid-grey);
+  line-height: 1.6;
+}
+
+.proof-timestamp {
+  text-align: right;
+  margin-top: 32px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--mid-grey);
+}
+
+@media (max-width: 768px) {
+  .proof-grid { grid-template-columns: 1fr; gap: 48px; }
+  .proof-item:not(:last-child)::after { display: none; }
+  .proof-number { font-size: 48px; }
+}

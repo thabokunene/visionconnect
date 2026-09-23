@@ -1,0 +1,106 @@
+/* LEADERSHIP — Section: leadership team grid. */
+
+.leadership {
+  background: var(--bone);
+  padding: var(--section-pad) 0;
+}
+
+.leadership h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 64px;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.leadership h2 .red-dot {
+  color: var(--signal-red);
+}
+
+.leadership-intro {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--mid-grey);
+  max-width: 680px;
+  margin-bottom: 64px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.team-photo {
+  aspect-ratio: 1 / 1;
+  background: #D1D5DB;
+  margin-bottom: 20px;
+  filter: saturate(0.6) contrast(1.05);
+  transition: filter 400ms ease-out;
+  border-radius: 2px;
+  background-size: cover;
+  background-position: center;
+}
+
+.team-card:nth-child(1) .team-photo {
+  background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop');
+}
+
+.team-card:nth-child(2) .team-photo {
+  background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop');
+}
+
+.team-card:nth-child(3) .team-photo {
+  background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop');
+}
+
+.team-card:nth-child(4) .team-photo {
+  background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop');
+}
+
+.team-card:hover .team-photo {
+  filter: saturate(1) contrast(1);
+}
+
+.team-name {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+.team-role {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--mid-grey);
+  margin-bottom: 12px;
+}
+
+.team-bio {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--mid-grey);
+  line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .leadership h2 { font-size: 32px; line-height: 40px; }
+
+  .team-grid { grid-template-columns: 1fr; }
+}

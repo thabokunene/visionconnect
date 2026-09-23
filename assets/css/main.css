@@ -1,0 +1,31 @@
+/*
+ * VisionConnect — stylesheet composition root.
+ *
+ * Single entry point. Import order IS the cascade contract:
+ *   tokens -> base -> layout -> components -> sections -> accessibility
+ * Do not reorder without checking equal-specificity conflicts.
+ * (A bundler such as Vite/esbuild can later flatten this pipeline
+ * for production without touching any module.)
+ */
+@import url('core/tokens.css');
+@import url('core/base.css');
+@import url('core/layout.css');
+
+@import url('components/wordmark.css');
+@import url('components/cta-link.css');
+@import url('components/quote-form.css');
+
+@import url('sections/pre-header.css');
+@import url('sections/navbar.css');
+@import url('sections/hero.css');
+@import url('sections/trust-bar.css');
+@import url('sections/capabilities.css');
+@import url('sections/corridors.css');
+@import url('sections/fleet.css');
+@import url('sections/leadership.css');
+@import url('sections/case-study.css');
+@import url('sections/proof.css');
+@import url('sections/contact.css');
+@import url('sections/footer.css');
+
+@import url('accessibility.css');
