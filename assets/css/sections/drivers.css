@@ -1,5 +1,5 @@
 /* DRIVERS — Section: driver recruitment + temporary driver supply page
- * (tracks, why-grid, temp supply panel, application/hire forms, checkbox pills).
+ * (tracks, why-grid, temp advantages, application/hire forms, checkbox pills).
  * Form primitives (form-step, form-row, inputs, submit) come from
  * components/order-form.css; this module only adds driver-page chrome.
  * Responsive rules co-located at the bottom.
@@ -175,61 +175,110 @@
   color: var(--mid-grey);
 }
 
-/* ---------- Temporary driver supply ---------- */
+/* ---------- Temporary driver supply — advantages ---------- */
 .temp-driver-section {
   background: var(--ink);
   padding: 120px 0;
   color: var(--white);
 }
 
-.temp-driver-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 80px;
-  align-items: center;
+.temp-driver-section > .container > h2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 64px;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 32px;
+  text-transform: uppercase;
 }
 
-.temp-driver-content h2 {
+.temp-driver-section > .container > h2 .red-dot {
+  color: var(--signal-red);
+}
+
+.temp-driver-lede {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 32px;
+  color: var(--light-grey);
+  max-width: 820px;
+  margin-bottom: 80px;
+}
+
+/* ADVANTAGE BLOCKS */
+.advantage-block {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 40px;
+  padding: 48px 0;
+  border-top: 0.5px solid var(--dark-border);
+}
+
+.advantage-block:last-of-type {
+  border-bottom: 0.5px solid var(--dark-border);
+}
+
+.advantage-number {
   font-family: var(--font-display);
   font-weight: 900;
   font-size: 48px;
-  line-height: 56px;
+  line-height: 1;
+  color: var(--mid-grey);
   letter-spacing: -0.03em;
+}
+
+.advantage-content {
+  max-width: 780px;
+}
+
+.advantage-content h3 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.02em;
   color: var(--white);
   margin-bottom: 24px;
   text-transform: uppercase;
 }
 
-.temp-driver-content h2 .red-dot {
+.advantage-content h3 .red-dot {
   color: var(--signal-red);
 }
 
-.temp-driver-content p {
+.advantage-content p {
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 16px;
   line-height: 28px;
   color: var(--light-grey);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
-.temp-driver-specs {
+.advantage-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* SPECS AND USES — DARK THEME */
+.temp-driver-section .temp-driver-specs {
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 80px;
+  margin-bottom: 48px;
   border-top: 0.5px solid var(--dark-border);
 }
 
-.temp-spec {
+.temp-driver-section .temp-spec {
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: 220px 1fr;
   gap: 16px;
-  padding: 14px 0;
+  padding: 16px 0;
   border-bottom: 0.5px solid var(--dark-border);
 }
 
-.temp-spec-label {
+.temp-driver-section .temp-spec-label {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 11px;
@@ -238,50 +287,86 @@
   color: var(--mid-grey);
 }
 
-.temp-spec-value {
+.temp-driver-section .temp-spec-value {
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 15px;
   color: var(--white);
 }
 
-.temp-driver-uses {
-  margin-bottom: 40px;
+.temp-driver-section .temp-driver-uses {
+  margin-bottom: 48px;
 }
 
-.temp-driver-uses-title {
+.temp-driver-section .temp-driver-uses-title {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--mid-grey);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
-.temp-uses-grid {
+.temp-driver-section .temp-uses-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
 }
 
-.temp-use {
+.temp-driver-section .temp-use {
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 14px;
   color: var(--light-grey);
-  padding: 10px 16px;
+  padding: 14px 18px;
   border: 0.5px solid var(--dark-border);
   border-radius: 2px;
+  text-align: center;
 }
 
-.temp-driver-image {
-  aspect-ratio: 4 / 5;
-  background:
-    url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop')
-    center / cover no-repeat;
-  filter: saturate(0.4) contrast(1.1);
+.temp-driver-cta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.btn-secondary-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 56px;
+  padding: 0 32px;
+  background: transparent;
+  border: 1.5px solid var(--dark-border);
   border-radius: 2px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 240ms ease-out, background 240ms ease-out;
+}
+
+.btn-secondary-light .material-symbols-outlined {
+  font-size: 18px;
+  color: var(--white);
+  transition: transform 240ms ease-out;
+}
+
+.btn-secondary-light:hover {
+  border-color: var(--white);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-secondary-light:focus-visible {
+  outline: 2px solid var(--signal-red);
+  outline-offset: 2px;
 }
 
 /* ---------- Forms ---------- */
@@ -368,9 +453,12 @@
 @media (max-width: 1024px) {
   .driver-tracks-grid { grid-template-columns: 1fr; }
   .driver-why-grid { grid-template-columns: repeat(2, 1fr); }
-  .temp-driver-grid { grid-template-columns: 1fr; gap: 48px; }
-  .temp-driver-image { aspect-ratio: 16 / 9; }
   .checkbox-group { grid-template-columns: repeat(2, 1fr); }
+  .temp-driver-section > .container > h2 { font-size: 40px; line-height: 48px; }
+  .advantage-block { grid-template-columns: 80px 1fr; gap: 24px; padding: 40px 0; }
+  .advantage-number { font-size: 36px; }
+  .advantage-content h3 { font-size: 26px; line-height: 34px; }
+  .temp-driver-section .temp-uses-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -384,10 +472,18 @@
   .driver-track-card h2 { font-size: 28px; line-height: 36px; }
   .driver-why h2 { font-size: 32px; line-height: 40px; }
   .driver-why-grid { grid-template-columns: 1fr; gap: 32px; }
-  .temp-driver-content h2 { font-size: 32px; line-height: 40px; }
-  .temp-spec { grid-template-columns: 1fr; gap: 4px; }
-  .temp-uses-grid { grid-template-columns: 1fr; }
   .driver-form-section h2,
   .hire-form-section h2 { font-size: 32px; line-height: 40px; }
   .checkbox-group { grid-template-columns: 1fr; }
+  .temp-driver-section { padding: 80px 0; }
+  .temp-driver-section > .container > h2 { font-size: 32px; line-height: 40px; }
+  .temp-driver-lede { font-size: 16px; line-height: 28px; margin-bottom: 48px; }
+  .advantage-block { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
+  .advantage-number { font-size: 28px; }
+  .advantage-content h3 { font-size: 22px; line-height: 30px; }
+  .temp-driver-section .temp-spec { grid-template-columns: 1fr; gap: 4px; }
+  .temp-driver-section .temp-uses-grid { grid-template-columns: 1fr; }
+  .temp-driver-cta { flex-direction: column; align-items: stretch; }
+  .temp-driver-cta .btn-primary,
+  .temp-driver-cta .btn-secondary-light { width: 100%; justify-content: center; }
 }
