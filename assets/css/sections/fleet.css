@@ -153,3 +153,148 @@
 
   .compliance-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
 }
+
+/* --- Inner page: full fleet configuration --- */
+.fleet-section {
+  padding: var(--section-pad) 0;
+  background: var(--white);
+}
+.fleet-grid-full {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+.fleet-image-large {
+  height: 420px;
+  background: url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=2075&auto=format&fit=crop') center/cover no-repeat;
+  filter: saturate(0.5) contrast(1.1);
+}
+.fleet-specs-full h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 32px;
+  text-transform: uppercase;
+}
+.fleet-specs-full h2 .red-dot {
+  color: var(--signal-red);
+}
+.spec-block {
+  margin-bottom: 32px;
+}
+.spec-block-title {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--signal-red);
+  margin-bottom: 16px;
+}
+/* spec-row / spec-label / spec-value / download-cta reuse the landing rules */
+.spec-row .spec-label {
+  min-width: 160px;
+}
+.download-block {
+  margin-top: 40px;
+}
+.download-block .download-cta {
+  border: 2px solid var(--ink);
+  padding: 16px 32px;
+  margin-top: 0;
+  color: var(--ink);
+  transition: background 240ms ease-out, color 240ms ease-out;
+}
+.download-block .download-cta:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+.download-block .download-cta:hover .material-symbols-outlined {
+  color: var(--white);
+}
+
+/* --- Inner page: compliance cards --- */
+.compliance-section {
+  padding: var(--section-pad) 0;
+  background: var(--bone);
+}
+.compliance-section h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+.compliance-section h2 .red-dot {
+  color: var(--signal-red);
+}
+.compliance-section .micro-label {
+  margin-bottom: 16px;
+}
+.compliance-grid-large {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+.compliance-card {
+  background: var(--white);
+  border: 1px solid var(--light-grey);
+  padding: 28px;
+}
+.compliance-card-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--bone);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.compliance-card-icon .material-symbols-outlined {
+  font-size: 24px;
+  color: var(--ink);
+}
+.compliance-card h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.compliance-status {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--signal-red);
+  margin-bottom: 12px;
+}
+.compliance-desc {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--mid-grey);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .compliance-grid-large { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .fleet-specs-full h2,
+  .compliance-section h2 { font-size: 28px; line-height: 34px; }
+  .fleet-image-large { height: 280px; }
+  .compliance-grid-large { grid-template-columns: 1fr; }
+  .spec-row { flex-direction: column; gap: 4px; }
+  .spec-row .spec-label { min-width: 0; }
+  .spec-value { text-align: left; }
+}

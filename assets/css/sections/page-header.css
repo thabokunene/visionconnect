@@ -1,0 +1,48 @@
+/* PAGE-HEADER — Section: shared header band for inner pages. */
+
+.page-header {
+  padding: 80px 0 40px;
+  background: var(--white);
+  border-bottom: 1px solid var(--light-grey);
+}
+.page-header.dark {
+  background: var(--ink);
+  border-bottom: 1px solid var(--dark-border);
+}
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.page-header h1 .red-dot {
+  color: var(--signal-red);
+}
+.page-header.dark h1 {
+  color: var(--white);
+}
+.page-intro {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--mid-grey);
+  max-width: 720px;
+  margin: 0;
+}
+.page-header.dark .page-intro {
+  color: var(--light-grey);
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 48px 0 32px;
+  }
+  .page-header h1 {
+    font-size: 36px;
+    line-height: 42px;
+  }
+}

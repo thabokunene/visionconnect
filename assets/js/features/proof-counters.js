@@ -1,14 +1,16 @@
 /*
- * Feature: proof metric counters.
- * Observes `.proof-number` elements (50% visibility) and animates each
- * value once when it scrolls into view.
- * (Production source labels this block: "Proof number counter animation".)
+ * Feature: metric counters (landing proof + about page numbers).
+ * Observes `.proof-number, .about-number-value` (50% visibility) and
+ * animates each value once when it scrolls into view.
+ * (v3: about-number-value joined the selector; 't' suffix branch added.
+ *  Note: '8,000t' hits the comma branch first and loses the 't' —
+ *  preserved exactly as production.)
  */
 
 import { animateCount } from '../core/animate-count.js';
 
 export function initProofCounters() {
-  const proofNumbers = document.querySelectorAll('.proof-number');
+  const proofNumbers = document.querySelectorAll('.proof-number, .about-number-value');
   const observerOptions = { threshold: 0.5 };
 
   const counterObserver = new IntersectionObserver((entries) => {
@@ -23,6 +25,9 @@ export function initProofCounters() {
         } else if (text.includes('%')) {
           const target = parseFloat(text);
           animateCount(el, target, false, '%');
+        } else if (text.includes('t')) {
+          const target = parseInt(text);
+          animateCount(el, target, false, 't');
         }
         counterObserver.unobserve(el);
       }

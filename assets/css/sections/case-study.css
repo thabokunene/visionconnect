@@ -209,3 +209,51 @@
 @media (max-width: 480px) {
   .case-stats { grid-template-columns: 1fr; }
 }
+
+/* --- Inner page: full case-study articles --- */
+.case-study-full {
+  padding: var(--section-pad) 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--light-grey);
+}
+.case-study-full.alt {
+  background: var(--bone);
+}
+.case-study-full:last-of-type {
+  border-bottom: none;
+}
+.case-study-full-header {
+  margin-bottom: 32px;
+}
+.case-study-full-header h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.case-study-full-header h2 .red-dot {
+  color: var(--signal-red);
+}
+.case-study-full .case-study-sub {
+  margin-bottom: 0;
+}
+/* Page-specific image overrides (base .case-image keeps the landing photo) */
+.case-image--lubumbashi {
+  background-image: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop');
+}
+.case-image--beira {
+  background-image: url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2070&auto=format&fit=crop');
+}
+/* Case 4: same photo as base, but production inline style dropped the gradient layer. */
+.case-image--kolwezi {
+  background-image: url('https://images.unsplash.com/photo-1591768793355-74d04bb6608f?q=80&w=2070&auto=format&fit=crop');
+}
+
+@media (max-width: 768px) {
+  .case-study-full { padding: 80px 0; }
+  .case-study-full-header h2 { font-size: 28px; line-height: 34px; }
+}

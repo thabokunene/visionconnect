@@ -102,3 +102,8 @@ a.contact-block-text:hover {
 @media (max-width: 768px) {
   .contact h2 { font-size: 32px; line-height: 40px; }
 }
+
+/* --- Inner page: contact with page-header offset --- */
+.contact.contact--page {
+  padding-top: 80px;
+}

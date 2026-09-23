@@ -1,0 +1,68 @@
+/* BTN-PRIMARY — Component: solid/outline CTA buttons shared by inner pages. */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  background: var(--signal-red);
+  padding: 16px 32px;
+  border: none;
+  cursor: pointer;
+  transition: background 240ms ease-out, color 240ms ease-out;
+}
+.btn-primary .material-symbols-outlined {
+  font-size: 18px;
+  color: var(--white);
+  transition: transform 240ms ease-out;
+}
+.btn-primary:hover {
+  background: var(--ink);
+}
+.btn-primary:hover .material-symbols-outlined {
+  transform: translateX(4px);
+}
+
+/* Light variant — sits on pale bands (CTA). */
+.btn-primary.light {
+  background: var(--white);
+  color: var(--ink);
+}
+.btn-primary.light .material-symbols-outlined {
+  color: var(--signal-red);
+}
+.btn-primary.light:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+.btn-primary.light:hover .material-symbols-outlined {
+  color: var(--white);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--signal-red);
+  padding-bottom: 4px;
+  transition: color 240ms ease-out;
+}
+.btn-secondary:hover {
+  color: var(--signal-red);
+}
+.btn-secondary .material-symbols-outlined {
+  font-size: 18px;
+}

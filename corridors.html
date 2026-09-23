@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corridors | VisionConnect</title>
+  <meta name="description" content="Eighteen trade corridors across South Africa, Botswana, Namibia, Zambia, Zimbabwe, Mozambique, Malawi, and the DRC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <div class="pre-header">
+    <div class="container">
+      <div class="pre-header-left">
+        <div class="pre-header-item">
+          <span class="material-symbols-outlined">call</span>
+          <span>24hr Control: +27 78 118 8828</span>
+        </div>
+        <div class="pre-header-divider"></div>
+        <div class="pre-header-item">
+          <span class="material-symbols-outlined">schedule</span>
+          <span>After-hours dispatch active</span>
+        </div>
+      </div>
+      <div class="pre-header-right">
+        <div class="lang-toggle">
+          <a href="#" class="active">EN</a>
+          <span>/</span>
+          <a href="#">AF</a>
+        </div>
+        <div class="pre-header-divider"></div>
+        <a href="contact.html" class="pre-header-link">
+          Request a Quote
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="wordmark">
+        <span class="vision">Vision</span><span class="connect">Connect</span><span class="dot">.</span>
+      </a>
+      <div class="nav-links">
+        <a href="capabilities.html">Capabilities</a>
+        <a href="corridors.html" class="active">Corridors</a>
+        <a href="fleet.html">Fleet</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="page-header dark">
+    <div class="container">
+      <div class="micro-label dark">Corridors</div>
+      <h1>Eighteen routes<span class="red-dot">.</span></h1>
+      <p class="page-intro">
+        We run the major SADC trade corridors. Copperbelt to Durban. Lusaka to Walvis Bay. Harare to Beira. Every critical border post. One standard.
+      </p>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE MAP -->
+  <section class="corridor-map">
+    <div class="container">
+      <div class="corridor-layout">
+        <div class="map-container">
+          <svg class="map-svg" viewBox="0 0 700 520" xmlns="http://www.w3.org/2000/svg">
+            <path class="country" d="M80,60 L160,40 L240,50 L320,30 L400,40 L470,60 L540,80 L590,120 L610,180 L600,250 L580,310 L540,370 L490,410 L430,440 L370,460 L310,450 L250,420 L200,380 L160,340 L130,290 L110,230 L90,160 Z"/>
+            <text class="country-label" x="160" y="130">NAMIBIA</text>
+            <text class="country-label" x="300" y="110">BOTSWANA</text>
+            <text class="country-label" x="440" y="120">ZIMBABWE</text>
+            <text class="country-label" x="530" y="200">MOZAMBIQUE</text>
+            <text class="country-label" x="330" y="220">SOUTH AFRICA</text>
+            <text class="country-label" x="300" y="60">ZAMBIA</text>
+            <text class="country-label" x="430" y="70">MALAWI</text>
+            <text class="country-label" x="220" y="30">DRC</text>
+
+            <line class="route-line active" x1="340" y1="220" x2="440" y2="140"/>
+            <line class="route-line" x1="340" y1="220" x2="320" y2="120"/>
+            <line class="route-line" x1="340" y1="220" x2="200" y2="140"/>
+            <line class="route-line" x1="340" y1="220" x2="530" y2="200"/>
+            <line class="route-line" x1="340" y1="220" x2="300" y2="70"/>
+            <line class="route-line" x1="300" y1="70" x2="220" y2="30"/>
+            <line class="route-line" x1="300" y1="70" x2="430" y2="70"/>
+            <line class="route-line" x1="430" y1="70" x2="530" y2="200"/>
+
+            <circle class="node active" cx="340" cy="220" r="4"/>
+            <circle class="node" cx="440" cy="140" r="4"/>
+            <circle class="node" cx="320" cy="120" r="4"/>
+            <circle class="node" cx="200" cy="140" r="4"/>
+            <circle class="node" cx="530" cy="200" r="4"/>
+            <circle class="node" cx="300" cy="70" r="4"/>
+            <circle class="node" cx="220" cy="30" r="4"/>
+            <circle class="node" cx="430" cy="70" r="4"/>
+          </svg>
+        </div>
+        <div class="info-panel">
+          <h3>
+            Select a country
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </h3>
+          <hr class="panel-hr">
+          <p class="panel-note">
+            Choose a corridor below to view transit times, border posts, permit requirements, and typical cargo.
+          </p>
+          <a href="#south-africa" class="panel-cta">
+            Browse All Corridors
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORRIDOR LIST -->
+  <section class="corridor-list">
+    <div class="container">
+      <div class="micro-label">All Corridors</div>
+
+      <div class="corridor-group" id="south-africa">
+        <div class="corridor-group-header">
+          <h2>South Africa</h2>
+          <span class="corridor-count">Domestic + Gateway</span>
+        </div>
+        <div class="corridor-cards">
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Johannesburg → Cape Town</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Distance</span><span>1,400 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>2 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>General, containers</span></div>
+            </div>
+          </div>
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Johannesburg → Durban</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Distance</span><span>570 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>1 day</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>Containers, general</span></div>
+            </div>
+          </div>
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Coega → Gauteng</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Distance</span><span>1,050 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>2 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>Automotive, general</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="corridor-group" id="botswana">
+        <div class="corridor-group-header">
+          <h2>Botswana</h2>
+          <span class="corridor-count">2 corridors</span>
+        </div>
+        <div class="corridor-cards">
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Johannesburg → Gaborone</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Groblersbrug / Tlokweng</span></div>
+              <div class="corridor-row"><span>Distance</span><span>380 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>1 day</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>Fuel, general</span></div>
+            </div>
+          </div>
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Johannesburg → Francistown</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Martins Drift</span></div>
+              <div class="corridor-row"><span>Distance</span><span>700 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>2 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>Mining equipment</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="corridor-group" id="namibia">
+        <div class="corridor-group-header">
+          <h2>Namibia</h2>
+          <span class="corridor-count">3 corridors</span>
+        </div>
+        <div class="corridor-cards">
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Johannesburg → Windhoek</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Nakop / Vioolsdrif</span></div>
+              <div class="corridor-row"><span>Distance</span><span>1,400 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>2 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>General, fuel</span></div>
+            </div>
+          </div>
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Cape Town → Windhoek</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Noordoewer</span></div>
+              <div class="corridor-row"><span>Distance</span><span>1,500 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>2 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>Fish, general</span></div>
+            </div>
+          </div>
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Walvis Bay → Zambia</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Kazungula / Katima</span></div>
+              <div class="corridor-row"><span>Distance</span><span>2,400 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>4 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>Copper, containers</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="corridor-group" id="zambia">
+        <div class="corridor-group-header">
+          <h2>Zambia</h2>
+          <span class="corridor-count">3 corridors</span>
+        </div>
+        <div class="corridor-cards">
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Johannesburg → Lusaka</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Beitbridge / Chirundu</span></div>
+              <div class="corridor-row"><span>Distance</span><span>2,140 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>4 to 5 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>Copper, transformers</span></div>
+            </div>
+          </div>
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Durban → Lusaka</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Beitbridge / Chirundu</span></div>
+              <div class="corridor-row"><span>Distance</span><span>2,500 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>5 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>Containers, general</span></div>
+            </div>
+          </div>
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Johannesburg → Copperbelt</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Beitbridge / Chirundu / Kasumbalesa</span></div>
+              <div class="corridor-row"><span>Distance</span><span>2,800 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>6 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>Mining equipment, reagents</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="corridor-group" id="zimbabwe">
+        <div class="corridor-group-header">
+          <h2>Zimbabwe</h2>
+          <span class="corridor-count">2 corridors</span>
+        </div>
+        <div class="corridor-cards">
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Johannesburg → Harare</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Beitbridge</span></div>
+              <div class="corridor-row"><span>Distance</span><span>1,100 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>2 to 3 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>General, fuel, grain</span></div>
+            </div>
+          </div>
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Johannesburg → Bulawayo</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Beitbridge</span></div>
+              <div class="corridor-row"><span>Distance</span><span>1,050 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>2 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>General, mining</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="corridor-group" id="mozambique">
+        <div class="corridor-group-header">
+          <h2>Mozambique</h2>
+          <span class="corridor-count">2 corridors</span>
+        </div>
+        <div class="corridor-cards">
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Johannesburg → Maputo</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Lebombo / Ressano Garcia</span></div>
+              <div class="corridor-row"><span>Distance</span><span>580 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>1 to 2 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>General, containers</span></div>
+            </div>
+          </div>
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Harare → Beira</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Machipanda</span></div>
+              <div class="corridor-row"><span>Distance</span><span>600 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>2 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>Grain, fuel, containers</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="corridor-group" id="malawi">
+        <div class="corridor-group-header">
+          <h2>Malawi</h2>
+          <span class="corridor-count">2 corridors</span>
+        </div>
+        <div class="corridor-cards">
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Johannesburg → Lilongwe</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Beitbridge / Nyamapanda / Mwanza</span></div>
+              <div class="corridor-row"><span>Distance</span><span>2,400 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>5 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>Fuel, fertiliser, general</span></div>
+            </div>
+          </div>
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Beira → Blantyre</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Mwanza / Zobue</span></div>
+              <div class="corridor-row"><span>Distance</span><span>700 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>2 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>Fuel, containers</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="corridor-group" id="drc">
+        <div class="corridor-group-header">
+          <h2>DRC</h2>
+          <span class="corridor-count">3 corridors</span>
+        </div>
+        <div class="corridor-cards">
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Johannesburg → Lubumbashi</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Beitbridge / Chirundu / Kasumbalesa</span></div>
+              <div class="corridor-row"><span>Distance</span><span>2,900 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>6 to 7 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>Mining equipment, reagents, copper</span></div>
+            </div>
+          </div>
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Durban → Lubumbashi</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Beitbridge / Chirundu / Kasumbalesa</span></div>
+              <div class="corridor-row"><span>Distance</span><span>3,200 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>7 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>Containers, project cargo</span></div>
+            </div>
+          </div>
+          <div class="corridor-card">
+            <div class="corridor-card-top">
+              <span class="corridor-route">Walvis Bay → Kolwezi</span>
+            </div>
+            <div class="corridor-card-body">
+              <div class="corridor-row"><span>Border</span><span>Kazungula / Kasumbalesa</span></div>
+              <div class="corridor-row"><span>Distance</span><span>3,100 km</span></div>
+              <div class="corridor-row"><span>Transit</span><span>7 days</span></div>
+              <div class="corridor-row"><span>Cargo</span><span>Copper, cobalt, mining</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-band-content">
+        <h2>Need a specific corridor<span class="red-dot">.</span></h2>
+        <p>If it moves in Southern Africa, we can quote it. Tell us your origin and destination and we'll respond within 24 hours.</p>
+        <a href="contact.html" class="btn-primary light">
+          Request a Quote
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <a href="index.html" class="footer-wordmark">
+        <span class="vision">Vision</span><span class="connect">Connect</span><span class="dot">.</span>
+      </a>
+      <p class="footer-tagline">
+        Dangerous goods. Abnormal loads. Cross-border freight. Southern Africa.
+      </p>
+      <hr class="footer-hr">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-col-title">Services</div>
+          <ul>
+            <li><a href="capabilities.html#dangerous-goods">Dangerous Goods</a></li>
+            <li><a href="capabilities.html#abnormal-loads">Abnormal Loads</a></li>
+            <li><a href="capabilities.html#cross-border">Cross-Border</a></li>
+            <li><a href="capabilities.html#bulk">Bulk / Grain</a></li>
+            <li><a href="capabilities.html#containerised">Containers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Corridors</div>
+          <ul>
+            <li><a href="#south-africa">South Africa</a></li>
+            <li><a href="#botswana">Botswana</a></li>
+            <li><a href="#namibia">Namibia</a></li>
+            <li><a href="#zambia">Zambia</a></li>
+            <li><a href="#zimbabwe">Zimbabwe</a></li>
+            <li><a href="#mozambique">Mozambique</a></li>
+            <li><a href="#malawi">Malawi</a></li>
+            <li><a href="#drc">DRC</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#leadership">Leadership</a></li>
+            <li><a href="fleet.html">Fleet</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Legal</div>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">POPIA Compliance</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="footer-hr">
+      <div class="footer-legal">
+        Vision Connect Logistics (Pty) Ltd. Reg: 2016/xxxxxx/07. VAT: 41xxxxxxxxx
+
+        Block C, Stoneridge Office Park, Greenstone, Modderfontein, Johannesburg, Gauteng, 1609
+
+        RTMS Accreditation: RTMS/xxxx. CBRTA Permit: CBR/xxxx. FESARTA Member.
+      </div>
+      <div class="footer-emergency">
+        After Hours / Emergency: <span>+27 78 118 8828</span>
+      </div>
+      <div class="footer-emergency footer-emergency--tight">
+        Email: <span>logic@visionconnect.africa</span>
+      </div>
+      <hr class="footer-hr">
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          © 2025 Vision Connect. All rights reserved.
+
+          POPIA: This site does not use tracking cookies without consent.
+        </div>
+        <div class="footer-red-dot"></div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
