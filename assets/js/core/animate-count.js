@@ -29,7 +29,7 @@ export function animateCount(el, target, useComma, suffix = '') {
       if (isFloat) {
         el.textContent = target.toFixed(1) + suffix;
       } else {
-        el.textContent = useComma ? target.toLocaleString() : val + suffix;
+        el.textContent = useComma ? target.toLocaleString() : target + suffix;
       }
     }
   }

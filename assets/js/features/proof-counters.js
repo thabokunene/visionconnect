@@ -2,6 +2,7 @@
  * Feature: proof metric counters.
  * Observes `.proof-number` elements (50% visibility) and animates each
  * value once when it scrolls into view.
+ * (Production source labels this block: "Proof number counter animation".)
  */
 
 import { animateCount } from '../core/animate-count.js';

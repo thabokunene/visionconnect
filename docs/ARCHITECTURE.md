@@ -2,7 +2,8 @@
 
 > Rebuild of the original single-file production page (≈2,300 lines of mixed
 > HTML + CSS + JS in one document) into a modular, layered, zero-build static
-> front end. **Production behavior is unchanged** — see
+> front end, kept in lockstep with production (latest: the multi-step order
+> form update). **Production behavior is unchanged** — see
 > [Behavior preservation](#behavior-preservation) for the verification method
 > and results.
 
@@ -28,7 +29,9 @@ visionconnect/
     │   ├── components/             # Layer 2: reusable UI components
     │   │   ├── wordmark.css        #   Wordmark (navbar + footer variants)
     │   │   ├── cta-link.css        #   Uppercase CTA link with icon
-    │   │   └── quote-form.css      #   Form controls + submit button
+    │   │   └── order-form.css      #   Multi-step order form (steps, inputs,
+    │   │                           #   radio pills, dimensions, submit + its
+    │   │                           #   own responsive rules)
     │   ├── sections/               # Layer 3: page sections (one file each)
     │   │   ├── pre-header.css
     │   │   ├── navbar.css
@@ -51,7 +54,7 @@ visionconnect/
         └── features/               # Layer B: one module per interactive feature
             ├── navbar-scroll.js    #   Sticky navbar scroll state
             ├── proof-counters.js   #   IntersectionObserver metric counters
-            └── quote-form.js       #   Quote form submit handling
+            └── order-form.js       #   Radio pills + validation + submit
 ```
 
 ---
@@ -101,19 +104,21 @@ accessibility   layout)               main.js imports features — nothing
   (wordmark, CTA link, form controls) are extracted to `components/`; styles
   scoped to a single region stay in that region's file (e.g. the corridor
   info-panel is *not* a shared component, so it stays in `corridors.css`).
-* **Variants as classes, not inline styles.** The9 inline `style="…"`
-  attributes in the original markup were replaced by modifier classes with
-  identical computed values:
+* **Variants as classes, not inline styles.** All13 inline `style="…"`
+  attributes in the production markup were replaced by modifier classes /
+  structural rules with identical computed values:
   * `.micro-label--spaced` (was `margin-top:48px` inline)
   * `.cap-table thead th:nth-child(n)` column widths (were inline on `<th>`)
   * `.contact-block-text--muted` (was inline `font-size/color`)
   * `.footer-emergency--tight` (was inline `margin-top`)
+  * `.form-group--gap-after` / `.form-group--gap-before` (were inline
+    `margin-bottom/top:20px` on standalone order-form groups)
 
 ### 2.3 JavaScript architecture
 
 * **Composition root.** `assets/js/main.js` contains no logic — it imports
   three feature modules and boots them in the original script's order
-  (`navbar → counters → form`). Adding a feature = one import + one
+  (`navbar → counters → order form`). Adding a feature = one import + one
   `init…()` call.
 * **Feature modules are self-contained.** Each `init…()` function encapsulates
   its own DOM query, event/observer wiring and teardown semantics. No feature
@@ -166,23 +171,42 @@ accessibility   layout)               main.js imports features — nothing
 ## 4. Behavior preservation
 
 The refactor's contract: *same rendered CSS, same JS semantics, same DOM*.
-It was verified mechanically against a byte-accurate copy of the original
+It was verified mechanically against a byte-accurate copy of the current
 production file:
 
 | Check | Method | Result |
 |---|---|---|
-| **CSS declarations** | Parse original vs concatenated modules into `(media-context, selector, property, value)` tuples (selector lists expanded) and compare multisets | **1054 → 1064**: exactly the10 intentional declarations from de-inlining; **0 missing,0 unexpected** |
+| **CSS declarations** | Parse original vs concatenated modules into `(media-context, selector, property, value)` tuples (selector lists expanded) and compare multisets | **1181 → 1193**: exactly the12 intentional declarations from de-inlining; **0 missing,0 unexpected** |
 | **Cascade safety** | For every duplicate `(context, selector, property)` key, compare declaration sequence | **0 conflicting groups** in the original (no order-sensitive pairs) — relocation across files cannot change rendering |
 | **HTML** | Reverse-transform `index.html` (re-inline styles, restore `<style>`/`<script>` blocks) | Reproduces the original **byte-for-byte** |
-| **JS** | Diff each function body against the original script; line-presence checks for observer/form logic | **All bodies identical** (comments/wrappers aside) |
+| **JS** | Diff each function body against the original script; marker checks for observer, radio-pill and validation logic | **All bodies identical / all markers present** (comments/wrappers aside) |
 | **Module graph** | Resolve every `import` path | All resolved; `node --check` passes on all5 modules |
 | **Runtime** | Serve site, fetch entry + full19-file CSS chain +5 JS modules | All **HTTP200** |
 
 Quirks preserved deliberately (behavior > tidiness in a no-behavior-change
-refactor): the `'0'` counter early-return that skips `unobserve`, the
-completion-branch `val` reference in `animateCount` (unreachable on this
-page's metric shapes), and the absence of an initial scroll-state check on
-page load.
+refactor): the `'0'` counter early-return that skips `unobserve`, and the
+absence of an initial scroll-state check on page load. (The unreachable
+`val` reference in `animateCount`'s completion branch was fixed *in
+production* with this update and is mirrored here as `target + suffix`.)
+
+### How a production update is absorbed
+
+The multi-step order-form update (contact section rewrite, new form styles,
+validation JS) validated the architecture — the entire change landed in a
+handful of files, with everything else untouched:
+
+| Production change | Where it landed |
+|---|---|
+| New order-form styles + form responsive rules | `components/order-form.css` (new file) |
+| `.contact-grid` ratio + section copy | `sections/contact.css`, `index.html` |
+| `animateCount` completion-branch fix | `core/animate-count.js` |
+| Radio-pill state + validation submit | `features/order-form.js` (renamed from `quote-form.js`) |
+| Import wiring | `main.css`, `main.js` (one line each) |
+| — untouched — | All other14 CSS modules, `navbar-scroll`, `proof-counters`, tokens, accessibility |
+
+Process: pin the new production file as baseline → mechanical declaration
+diff enumerates every change → port per the dependency rule → re-run the
+parity suite.
 
 ---
 

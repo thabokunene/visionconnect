@@ -22,7 +22,7 @@ python3 -m http.server 8080
 index.html              Document shell (no inline CSS/JS)
 assets/css/main.css     Stylesheet composition root (@import pipeline)
 assets/css/core/        Tokens, reset, layout primitives
-assets/css/components/  Reusable UI (wordmark, CTA link, quote form)
+assets/css/components/  Reusable UI (wordmark, CTA link, order form)
 assets/css/sections/    One module per page section + its breakpoints
 assets/css/accessibility.css   Focus + reduced-motion (loads last)
 assets/js/main.js       JS composition root

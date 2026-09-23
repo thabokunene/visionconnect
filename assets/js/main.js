@@ -7,8 +7,8 @@
  */
 import { initNavbarScroll } from './features/navbar-scroll.js';
 import { initProofCounters } from './features/proof-counters.js';
-import { initQuoteForm } from './features/quote-form.js';
+import { initOrderForm } from './features/order-form.js';
 
 initNavbarScroll();
 initProofCounters();
-initQuoteForm();
+initOrderForm();

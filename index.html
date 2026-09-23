@@ -498,56 +498,274 @@ Delivery</div>
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT & ORDER FORM -->
   <section class="contact" id="contact">
     <div class="container">
-      <div class="micro-label">07 / Contact</div>
+      <div class="micro-label">07 / Request a Quote</div>
       <h2>Let's move<span class="red-dot">.</span></h2>
       <p class="contact-intro">
-        One abnormal load to Lubumbashi. A weekly grain corridor to Beira. Whatever it is, we respond within 24 hours with a route plan, permit strategy, and firm quote.
+        Fill in the details below. The more you tell us, the more accurate our quote. We respond within 24 hours with a route plan, permit strategy, and firm pricing.
       </p>
       <div class="contact-grid">
-        <form class="quote-form" id="quote">
-          <div class="form-group">
-            <label class="form-label" for="name">Full Name</label>
-            <input class="form-input" type="text" id="name">
+        <form class="order-form" id="quote" novalidate>
+
+          <!-- STEP 1: CONTACT -->
+          <div class="form-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">Your Contact Details</div>
+              <div class="step-desc">Who are we quoting for, and how do we reach you?</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="name">Full Name <span class="req">*</span></label>
+                  <input class="form-input" type="text" id="name" name="name" placeholder="John Smith" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="company">Company <span class="req">*</span></label>
+                  <input class="form-input" type="text" id="company" name="company" placeholder="Company (Pty) Ltd" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="email">Email <span class="req">*</span></label>
+                  <input class="form-input" type="email" id="email" name="email" placeholder="john@company.co.za" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="phone">Phone / WhatsApp <span class="req">*</span></label>
+                  <input class="form-input" type="tel" id="phone" name="phone" placeholder="+27 82 123 4567" required>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="company">Company</label>
-            <input class="form-input" type="text" id="company">
+
+          <!-- STEP 2: CARGO -->
+          <div class="form-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">What Are We Moving?</div>
+              <div class="step-desc">Cargo type, weight, and dimensions. If you don't know exact figures, estimate.</div>
+
+              <div class="form-group form-group--gap-after">
+                <label class="form-label">Load Type <span class="req">*</span></label>
+                <div class="radio-group" id="loadTypeGroup">
+                  <label class="radio-option">
+                    <input type="radio" name="loadType" value="Dangerous Goods" required>
+                    Dangerous Goods
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="loadType" value="Abnormal Load">
+                    Abnormal Load
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="loadType" value="Cross-Border">
+                    Cross-Border
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="loadType" value="Bulk / Grain / Minerals">
+                    Bulk / Grain
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="loadType" value="Containerised">
+                    Containerised
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="loadType" value="Other">
+                    Other
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="commodity">Commodity Description <span class="req">*</span></label>
+                  <input class="form-input" type="text" id="commodity" name="commodity" placeholder="e.g. Copper concentrate, transformer, maize" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="weight">Total Weight (kg or tonnes)</label>
+                  <input class="form-input" type="text" id="weight" name="weight" placeholder="e.g. 34t or 34,000 kg">
+                </div>
+              </div>
+
+              <div class="form-group form-group--gap-after">
+                <label class="form-label">Dimensions (if abnormal or oversized)</label>
+                <div class="dimension-grid">
+                  <div class="dimension-field">
+                    <label for="dimLength">Length (m)</label>
+                    <input type="text" id="dimLength" name="dimLength" placeholder="e.g. 12">
+                  </div>
+                  <div class="dimension-field">
+                    <label for="dimWidth">Width (m)</label>
+                    <input type="text" id="dimWidth" name="dimWidth" placeholder="e.g. 4.2">
+                  </div>
+                  <div class="dimension-field">
+                    <label for="dimHeight">Height (m)</label>
+                    <input type="text" id="dimHeight" name="dimHeight" placeholder="e.g. 4.8">
+                  </div>
+                  <div class="dimension-field">
+                    <label for="dimUnits">Units / Pieces</label>
+                    <input type="text" id="dimUnits" name="dimUnits" placeholder="e.g. 6">
+                  </div>
+                </div>
+                <div class="form-hint">
+                  <span class="material-symbols-outlined">info</span>
+                  <span>Abnormal loads over 4.5m wide or 5m high require special permits and route surveys. Include exact figures if known.</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="dgClass">ADR Class (if dangerous goods)</label>
+                  <select class="form-select" id="dgClass" name="dgClass">
+                    <option value="">Not applicable / unsure</option>
+                    <option>Class 1 - Explosives</option>
+                    <option>Class 2 - Gases</option>
+                    <option>Class 3 - Flammable Liquids</option>
+                    <option>Class 4 - Flammable Solids</option>
+                    <option>Class 5 - Oxidizers</option>
+                    <option>Class 6 - Toxic Substances</option>
+                    <option>Class 7 - Radioactive</option>
+                    <option>Class 8 - Corrosives</option>
+                    <option>Class 9 - Miscellaneous</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="tremcard">Tremcard / UN Number</label>
+                  <input class="form-input" type="text" id="tremcard" name="tremcard" placeholder="e.g. UN 1263">
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="email">Email</label>
-            <input class="form-input" type="email" id="email">
+
+          <!-- STEP 3: ROUTE -->
+          <div class="form-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <div class="step-title">Route & Schedule</div>
+              <div class="step-desc">Where is it going, and when does it need to be there?</div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="origin">Origin City & Country <span class="req">*</span></label>
+                  <input class="form-input" type="text" id="origin" name="origin" placeholder="e.g. Johannesburg, South Africa" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="destination">Destination City & Country <span class="req">*</span></label>
+                  <input class="form-input" type="text" id="destination" name="destination" placeholder="e.g. Lubumbashi, DRC" required>
+                </div>
+              </div>
+
+              <div class="form-row three">
+                <div class="form-group">
+                  <label class="form-label" for="collectionDate">Collection Date</label>
+                  <input class="form-input" type="date" id="collectionDate" name="collectionDate">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="deliveryDate">Required Delivery</label>
+                  <input class="form-input" type="date" id="deliveryDate" name="deliveryDate">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="frequency">Frequency</label>
+                  <select class="form-select" id="frequency" name="frequency">
+                    <option value="">One-off shipment</option>
+                    <option>Weekly</option>
+                    <option>Bi-weekly</option>
+                    <option>Monthly</option>
+                    <option>Ongoing contract</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group form-group--gap-before">
+                <label class="form-label" for="borderPref">Preferred Border Post (if known)</label>
+                <select class="form-select" id="borderPref" name="borderPref">
+                  <option value="">No preference / advise us</option>
+                  <option>Beitbridge (SA / Zimbabwe)</option>
+                  <option>Kazungula (Botswana / Zambia)</option>
+                  <option>Kasumbalesa (Zambia / DRC)</option>
+                  <option>Chirundu (Zimbabwe / Zambia)</option>
+                  <option>Groblersbrug (SA / Botswana)</option>
+                  <option>Nakop (SA / Namibia)</option>
+                  <option>Vioolsdrif (SA / Namibia)</option>
+                  <option>Lebombo (SA / Mozambique)</option>
+                  <option>Machipanda (Zimbabwe / Mozambique)</option>
+                  <option>Mwanza (Zambia / Malawi)</option>
+                  <option>Maseru Bridge (SA / Lesotho)</option>
+                  <option>Ngwenya / Oshoek (SA / Eswatini)</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="load-type">Load Type</label>
-            <select class="form-select" id="load-type">
-              <option value="">Select load type</option>
-              <option>Dangerous Goods</option>
-              <option>Abnormal Load</option>
-              <option>Cross-Border</option>
-              <option>Bulk / Grain / Minerals</option>
-              <option>Containerised</option>
-            </select>
+
+          <!-- STEP 4: SPECIAL REQUIREMENTS -->
+          <div class="form-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <div class="step-title">Special Requirements</div>
+              <div class="step-desc">Anything else we need to know? Permits, escorts, insurance, handling.</div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="permitAssist">Permit Assistance Required?</label>
+                  <select class="form-select" id="permitAssist" name="permitAssist">
+                    <option value="">No, we have permits</option>
+                    <option>Yes, full permit management</option>
+                    <option>Yes, cross-border documentation only</option>
+                    <option>Yes, abnormal load permits only</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="escort">Escort Vehicles Required?</label>
+                  <select class="form-select" id="escort" name="escort">
+                    <option value="">No</option>
+                    <option>Yes, one escort</option>
+                    <option>Yes, two escorts</option>
+                    <option>Yes, full convoy with pilot vehicles</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="insurance">Cargo Insurance</label>
+                  <select class="form-select" id="insurance" name="insurance">
+                    <option value="">Own insurance</option>
+                    <option>Require GIT cover</option>
+                    <option>Require full risk cover</option>
+                    <option>Need advice on coverage</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="customs">Customs Clearance</label>
+                  <select class="form-select" id="customs" name="customs">
+                    <option value="">Own clearing agent</option>
+                    <option>Require customs clearance at both ends</option>
+                    <option>Require clearance at destination only</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group form-group--gap-before">
+                <label class="form-label" for="notes">Additional Notes or Special Handling Instructions</label>
+                <textarea class="form-textarea" id="notes" name="notes" placeholder="Temperature control, fragile items, loading equipment required, site access restrictions, security requirements..."></textarea>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="origin">Origin</label>
-            <input class="form-input" type="text" id="origin" placeholder="e.g. Johannesburg, South Africa">
+
+          <!-- SUBMIT -->
+          <div class="submit-block">
+            <button type="submit" class="submit-btn">
+              Submit Request
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+            <p class="submit-note">
+              We respond within 24 hours. For urgent or after-hours requests, call +27 78 118 8828.
+            </p>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="destination">Destination</label>
-            <input class="form-input" type="text" id="destination" placeholder="e.g. Lubumbashi, DRC">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="notes">Brief / Notes</label>
-            <textarea class="form-textarea" id="notes" placeholder="Cargo dimensions, weights, special requirements"></textarea>
-          </div>
-          <button type="submit" class="submit-btn">
-            Submit Request
-            <span class="material-symbols-outlined">arrow_forward</span>
-          </button>
+
         </form>
+
+        <!-- CONTACT DETAILS SIDEBAR -->
         <div class="contact-details">
           <div class="contact-block">
             <div class="contact-block-title">24hr Control Tower</div>
