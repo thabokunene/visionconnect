@@ -1,0 +1,43 @@
+{
+  "name": "citizen-human-capital",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "playwright test",
+    "format": "prettier --write index.html src tests scripts server *.js *.json *.md",
+    "format:check": "prettier --check index.html src tests scripts server *.js *.json *.md",
+    "generate:rpl": "node scripts/generate-rpl.js",
+    "predev": "npm run generate:services",
+    "prebuild": "npm run generate:services",
+    "prepreview": "npm run generate:services",
+    "generate:hr": "node scripts/generate-hr.js",
+    "generate:services": "npm run generate:rpl && npm run generate:hr && npm run generate:driver && npm run generate:popia && npm run generate:conduct && npm run generate:apply && npm run generate:employers && npm run generate:resources",
+    "generate:driver": "node scripts/generate-driver.js",
+    "generate:popia": "node scripts/generate-popia.js",
+    "generate:conduct": "node scripts/generate-conduct.js",
+    "server": "node server/index.js",
+    "test:api": "node --test server/*.test.js",
+    "generate:apply": "node scripts/generate-apply.js",
+    "generate:employers": "node scripts/generate-employers.js",
+    "generate:resources": "node scripts/generate-resources.js",
+    "audit:links": "node scripts/audit-links.js"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.64.1",
+    "prettier": "^3.9.10",
+    "vite": "^6.4.1"
+  },
+  "dependencies": {
+    "@fontsource-variable/dm-sans": "^5.3.0",
+    "@fontsource/lato": "^5.3.0",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.3",
+    "helmet": "^8.3.0",
+    "multer": "^2.5.0"
+  }
+}
