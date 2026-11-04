@@ -1,0 +1,42 @@
+node_modules/
+dist/
+.playwright/
+
+playwright-report/
+test-results/
+
+# Generated from the shared shell and RPL content before dev/build.
+services/rpl/index.html
+services/external-hr-management/index.html
+services/driver-recruitment/index.html
+popia-notice/index.html
+code-of-conduct/index.html
+
+apply/index.html
+.application-data/
+.env
+.env.*
+!.env.example
+
+employers/index.html
+
+# Generated service overview and editorial resources
+services/index.html
+services/cpd/index.html
+insights/**/index.html
+insights/index.html
+
+# Generated landing, overview, support and draft legal documents
+home/index.html
+about/index.html
+what-we-do/index.html
+drivers/index.html
+events/hotel-offers/index.html
+training-proposal/index.html
+privacy-policy/index.html
+paia-manual/index.html
+terms/index.html
+
+about/our-purpose/index.html
+about/our-team/index.html
+about/sustainability/index.html
